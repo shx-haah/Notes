@@ -56,7 +56,7 @@
 \newcommand{\linktoprf}[1]{\hyperlink{#1}{To complete proof.}}
 \newcommand{\targetprf}[1]{\hypertarget{#1}{Proof of \autoref{#1}}}
 
-\title{Note 6: Comparison theorem in Riemannian geometry}
+\title{Note 6: Comparison theorems on Riemannian geometry}
 \date{} % 显示日期
 
 \renewcommand\refname{Reference}
@@ -66,7 +66,7 @@
 
 \maketitle
 
-\subsection*{Jacobi field and Rauch comparison theorem}
+\subsection*{Jacobi field and conjugate points}
 
 In the Euclidean plane, geodesics originating from the same point may move farther apart, or figuratively speaking, they "diverge". However, on a unit sphere, 
 any two geodesics originating from the same point will intersect at the antipodal point, or in other words, they "converge".
@@ -116,9 +116,17 @@ $$
 $$
 Therefore any Jacobi field $J$ may be written uniquely as
 $$
-J=J_0+(a t+b) T
+J=J^\perp+(a t+b) T
 $$
-where $\left\langle J_0, T\right\rangle \equiv 0$. This shows that those Jacobi fields, called normal Jacobi fields, perpendicular to $T$ are what we really care about. 
+where $\left\langle J^\perp, T\right\rangle \equiv 0$. This shows that those Jacobi fields, called normal Jacobi fields, perpendicular to $T$ are what we really care about. 
+One can calculate the coefficients: 
+$$
+a= \langle J'(0), T(0)\rangle \quad \text{ and } \quad b= \langle J(0), T(0)\rangle. 
+$$
+Thus $J$ is a normal Jacobi field if and only if 
+$$
+J(0)\perp T(0) \quad \text{ and } \quad J'(0)\perp T(0). 
+$$
 
 Finally, if $J$ is a Jacobi field, then $J$ comes from a variation of geodesics.
 % In fact, let $c(s)$ be a curve such that $c^{\prime}(0)=J(0)$, and let $T$ and $J^{\prime}(0)$ be extended to parallel fields along $c(s)$. 
@@ -294,6 +302,8 @@ The following proposition relates conjugate points with the singularities of the
   % construction above, the multiplicity of $q$ is equal to the dimension of the kernel of $\left(d \exp _p\right)_{t_0 v}$.
 \end{proof}
 
+\subsection*{Rauch Comparison Theorem}
+
 With enough preparations, we state Rauch comparison theorem and will show some examples of application. Then we will give a brief proof as $n=2$ given that the motivation of the proof 
 in this case is most clear. For general situations, we need introduce Morse index forms to complete the proof which will be discussed in the sequel subsection. 
 
@@ -322,7 +332,7 @@ Then for any $p \in M$, $\exp_{p}: T_pM \rightarrow M$ is a distance-expanding m
 $$
 \left|(\exp_{p})_* X\right| \geq |X|, \quad \forall X \in T_pM
 $$
-Furthermore, there is an interesting further corollary as follows:
+Furthermore, there is an interesting corollary (a special case of Toponogov Comparison Theorem) as follows:
 \begin{corollary}
   Let $M$ be a simply connected complete Riemannian manifold with non-positive sectional curvature, and let $ABC$ be a geodesic triangle in $M$ 
   (i.e. all sides of the triangle are minimal geodesics), with corresponding angles $A, B, C$, and corresponding side $a, a, c$, then 
@@ -331,7 +341,7 @@ Furthermore, there is an interesting further corollary as follows:
 
   (2) $A+B+C \leqslant \pi$. 
 \end{corollary}
-The proof of above corollary together with some explanation of how Rauch comparison theorem applies to sphere theorem can be found in \cite{WuHongXi2014}, Chapter 8. 
+The proof of above corollary together with some explanation of how Rauch Comparison Theorem applies to sphere theorem can be found in \cite{WuHongXi2014}, Chapter 8. 
 
 Since $(\exp_{p})_*$ is always isometric in the radial direction, without loss of generality, we can assume that $X \perp x, \widetilde{X} \perp \widetilde{x}$ 
 in $T_pM, T_{\widetilde{p}}\widetilde{M}$, respectively, and describe $(\exp_{p})_* X$ via Jacobi fields. 
@@ -341,12 +351,11 @@ in $T_pM, T_{\widetilde{p}}\widetilde{M}$, respectively, and describe $(\exp_{p}
 % we have $J(t)$, which is the Jacobi field along $\widetilde{\gamma}$, with $J(0) = 0, \dot{J}(0) = \widetilde{X}, J(1) = (\exp_{p})_* \widetilde{X}$. 
 By these observations, we can restate the Rauch comparison theorem with slight generalization of $\widetilde{M}$ as follows:
 \begin{theorem}[Rauch comparison theorem]
-  Let $\gamma:[0, a] \rightarrow M^n$ and $\tilde{\gamma}:[0, a] \rightarrow \tilde{M}^{n+k}$, $k \geq 0$, be geodesics with the same velocity (i.e. $\left.\left|\gamma^{\prime}(t)\right|=\left|\tilde{\gamma}^{\prime}(t)\right|\right)$, and let $J$ and $\tilde{J}$ be Jacobi fields along $\gamma$ and $\tilde{\gamma}$, respectively, such that
+  Let $\gamma:[0, a] \rightarrow M^n$ and $\tilde{\gamma}:[0, a] \rightarrow \tilde{M}^{n+k}$, $k \geq 0$, be geodesics with the same velocity 
+  (i.e. $\left.\left|\gamma^{\prime}(t)\right|=\left|\tilde{\gamma}^{\prime}(t)\right|\right)$. 
+  Let $J$ and $\tilde{J}$ be normal Jacobi fields along $\gamma$ and $\tilde{\gamma}$, respectively, with $J(0)=\tilde{J}(0)=0$ such that
   $$
-  \begin{gathered}
-  J(0)=\tilde{J}(0)=0, \quad\left\langle J^{\prime}(0), \gamma^{\prime}(0)\right\rangle=\left\langle\tilde{J}^{\prime}(0), \tilde{\gamma}^{\prime}(0)\right\rangle, \\
   \left|J^{\prime}(0)\right|=\left|\tilde{J}^{\prime}(0)\right| .
-  \end{gathered}
   $$
   Assume that 
 
@@ -383,40 +392,65 @@ By these observations, we can restate the Rauch comparison theorem with slight g
     \end{array}\right. 
   \end{aligned}
   $$
-  where $\tilde{K}, K$ are functions on $[0, a]$ and
+  where $\tilde{K}, K$ are functions on $(0, a]$ and
   $$
   \tilde{K}(t) \geq K(t), \quad \forall t \in[0, a],
   $$
-  then for any $\tilde{f}>0$ on $[0, a]$, we have $f \geq \tilde{f}$. To prove this, we only need to let 
+  then for any $\tilde{f}>0$ on $[0, a]$, we have $f \geq \tilde{f}$. 
+  
+  To prove this, we only need to let 
   $$
   \Phi(t) = (ff' - \tilde{f}'f)(t).
   $$ 
   It is known that when $\tilde{f},f \geq 0$, we always have $\Phi'(t) \geq 0$. 
-  For example, in the interval $[0,c]$ where $\tilde{f},f \geq 0$. Since $\Phi(0)=0$, we have
+  In fact, $f>0$ on $(0,a]$, which will be illustrated later. Therefore, since $\Phi(0)=0$, we have
   $$
-  \Phi(t) \geq 0, \quad \forall t \in [0,c].
+  \Phi(t) \geq 0, \quad \forall t \in [0,a].
   $$
-  If necessary, by slightly shrinking $c$, we can assume that $\tilde{f},f > 0$ in $(0,c)$. Rewriting $\Phi \geq 0$ as
+  Then rewrite $\Phi \geq 0$ as
   \begin{equation}
     \frac{f' }{f} \geq \frac{\tilde{f}'}{\tilde{f}}
   \end{equation}
-  integrating it yields
+  and integrate it yields
   $$
   \ln\frac{f(t)}{f(\epsilon)} \geq \ln\frac{\tilde{f}(t)}{\tilde{f}(\epsilon)}
   $$
-  where $0 < \epsilon < t < c$. Therefore,
+  where $0 < \epsilon < t \leq a$. Therefore,
   \begin{equation}
     \frac{f(t)}{\tilde{f}(t)} \geq \lim_{\epsilon \rightarrow 0} \frac{f(\epsilon)}{\tilde{f}(\epsilon)} = \frac{b}{b} = 1.
   \end{equation}
-  Thus we have $f(t) \geq \tilde{f}(t), \forall t \in (0,c)$. It is evident that in the interval where $\tilde{f} \geq 0$, namely $[0,a]$, we have $f \geq \tilde{f}$.
+  Thus we have $f(t) \geq \tilde{f}(t), \forall t \in (0,a]$. 
+
+  Now we prove that $f>0$ on $(0,a]$. Otherwise, there exists $r\in (0,a)$ such that $f(r)=0$ and for any $t\in (0,r)$, $f(t)>0$ (notice that $f'(0)>0$). 
+  Thus, $\tilde{f},f > 0$ on $(0,r)$. Taking $t\rightarrow r$ in (3), we have
+  $$
+  0=f(r)\geq \tilde{f}(r)>0, 
+  $$
+  which leads to a contradiction.
 \end{proof}
 
 For general situations, let 
 $$
 f(t)=\langle J(t),J(t)\rangle,\quad \widetilde{f}(t)=\langle \widetilde{J}(t),\widetilde{J}(t)\rangle.
 $$
-Motivated by above proof, it is essential that the limit in (3) equals $1$ and (2) holds provided $\tilde{f},f \geq 0$ on $[0,a]$. 
-The former is obvious by Proposition 5. However, to verify (2), one needs the minimal property of Jacobi fields which is known as the basic index lemma.
+Motivated by above proof, if $f(a) \geq \tilde{f}(a)$ holds, it is necessary to prove: 
+$$
+\lim_{\epsilon \rightarrow 0} \frac{f(\epsilon)}{\tilde{f}(\epsilon)} = 1 \quad \text{ and } \quad \frac{f' }{f} \geq \frac{\tilde{f}'}{\tilde{f}}, \text{ on } (0,a] \text{ on which } \tilde{f},f > 0.
+$$
+The former can be obtained by L'Hospital's rule:
+$$
+\begin{aligned}
+\lim _{t \rightarrow 0} \frac{f(t)}{\tilde{f}(t)} 
+& =\lim _{t \rightarrow 0} \frac{\left\langle J^{\prime}(t), J(t)\right\rangle}{\left\langle\tilde{J}^{\prime}(t), \tilde{J}(t)\right\rangle} \\
+& =\lim _{t \rightarrow 0} \frac{\left\langle J^{\prime}(t), \frac{J(t)-J(0)}{t}\right\rangle}{\left\langle\tilde{J}^{\prime}(t), \frac{\tilde{J}(t)-\tilde{J}(0)}{t}\right\rangle} \\
+% & =\lim _{t \rightarrow 0} \frac{\left\langle J^{\prime \prime}(t), J(t)\right\rangle+\left\langle J^{\prime}(t), J^{\prime}(t)\right\rangle}{\left\langle\tilde{J}^{\prime \prime}(t), \tilde{J}(t)\right\rangle+\left\langle\tilde{J}^{\prime}(t), \tilde{J}^{\prime}(t)\right\rangle} \\
+& =\frac{\left|J^{\prime}(0)\right|^2}{\left|\tilde{J}^{\prime}(0)\right|^2}=1.
+\end{aligned}
+$$
+To prove $\tilde{f},f > 0$ on $(0,a]$, let's assume that $\tilde{J}$ is a non-zero Jacobi field; otherwise, the conclusion is trivial. 
+Since there are no conjugate points to $\tilde{\gamma}(0)$ along $\tilde{\gamma}$, the function $|\tilde{J}(t)|$ has no zeros other than $t=0$, 
+i.e. $\tilde{f} > 0$ on $(0,a]$. Also, one can prove $f>0$ on $(0,a]$ in the same way as the final part of the proof for the case $n=2$, provided the latter inequality holds true. 
+However, to verify the inequality, one needs the minimal property of Jacobi fields which is known as the basic index lemma.
 
 % \begin{theorem}
 %   Let $\gamma:[0, a] \rightarrow \widetilde{M}, \widetilde{\gamma}:[0, a] \rightarrow M$ be both normal geodesics, where $\operatorname{dim} \widetilde{M} = \operatorname{dim} M$. 
@@ -542,8 +576,50 @@ In a certain sense, Jacobi fields minimize the index form.
 
 We are now in the position to prove Rauch Comparison Theorem.
 \begin{proof}[Proof of Theorem 2]
-  
+  首先考虑 $J \perp \gamma^{\prime}, \tilde{J} \perp \tilde{\gamma}^{\prime}$ 的情形. 此时,
+  $$
+  J(0)=\tilde{J}(0)=0, \quad\left|J^{\prime}(0)\right|=\left|\tilde{J}^{\prime}(0)\right| .
+  $$
+  要证明的结论是
+  $$
+  \frac{|J(t)|^2}{|\tilde{J}(t)|^2} \geq 1, \quad \forall t \in(0, l] .
+  $$
+  利用 L'Hospital 法则和 (5.1) 式得到
+  $$
+  \begin{aligned}
+  \lim _{t \rightarrow 0} \frac{|J(t)|^2}{|\tilde{J}(t)|^2} & =\lim _{t \rightarrow 0} \frac{\left\langle J^{\prime}(t), J(t)\right\rangle}{\left\langle\tilde{J}^{\prime}(t), \tilde{J}(t)\right\rangle} \\
+  & =\lim _{t \rightarrow 0} \frac{\left\langle J^{\prime \prime}(t), J(t)\right\rangle+\left\langle J^{\prime}(t), J^{\prime}(t)\right\rangle}{\left\langle\tilde{J}^{\prime \prime}(t), \tilde{J}(t)\right\rangle+\left\langle\tilde{J}^{\prime}(t), \tilde{J}^{\prime}(t)\right\rangle} \\
+  & =\frac{\left|J^{\prime}(0)\right|^2}{\left|\tilde{J}^{\prime}(0)\right|^2}=1 .
+  \end{aligned}
+  $$
+  因此, 只需要证明 $\frac{|J(t)|^2}{|\tilde{J}(t)|^2}$ 是 $t$ 的增函数, 即对于任意的 $t>0$ 有
+  $$
+  \frac{\mathrm{d}}{\mathrm{d} t}\left(\frac{|J(t)|^2}{|\tilde{J}(t)|^2}\right) \geq 0 .
+  $$
+  又因为在 $J(t) \neq 0$ 的点处,
+  $$
+  \begin{aligned}
+  \frac{1}{2} \frac{\mathrm{d}}{\mathrm{d} t}\left(\frac{|J(t)|^2}{|\tilde{J}(t)|^2}\right) & =\frac{\left\langle J^{\prime}, J\right\rangle}{\langle\tilde{J}, \tilde{J}\rangle}-\frac{\langle J, J\rangle\left\langle\tilde{J}^{\prime}, \tilde{J}\right\rangle}{\langle\tilde{J}, \tilde{J}\rangle^2} \\
+  & =\frac{\langle J, J\rangle}{\langle\tilde{J}, \tilde{J}\rangle}\left(\frac{\left\langle J^{\prime}, J\right\rangle}{\langle J, J\rangle}-\frac{\left\langle\tilde{J}^{\prime}, \tilde{J}\right\rangle}{\langle\tilde{J}, \tilde{J}\rangle}\right) .
+  \end{aligned}
+  $$
+  所以, 只需要证明 $J$ 在 $(0, l]$ 上处处不为零并且
+  $$
+  \frac{\left\langle J^{\prime}, J\right\rangle}{\langle J, J\rangle} \geq \frac{\left\langle\tilde{J}^{\prime}, \tilde{J}\right\rangle}{\langle\tilde{J}, \tilde{J}\rangle}, \quad t \in(0, l] .
+  $$
+  假定 $r \in(0, l]$, 使得 Jacobi 场 $J$ 在 $(0, r)$ 上无零点. 首先要证 明 (5.4) 式在区间 $(0, r)$ 上成立. 对于任意取定的 $t_1 \in(0, r)$, 由于
 \end{proof}
+\begin{remark}
+  Rauch Comparison Theorem still holds when $J(0),\tilde{J}(0)\neq 0$ or moreover, $J$ and $\tilde{J}$ are not normal Jacobi fields. 
+  In that case, $J$ and $\tilde{J}$ should satisfy: 
+  $$
+  \begin{aligned}
+    & \left\langle J(0), \gamma^{\prime}(0)\right\rangle=\left\langle\tilde{J}(0), \tilde{\gamma}^{\prime}(0)\right\rangle, \\
+    & \angle \left(J^{\prime}(0), \gamma^{\prime}(0)\right)=\angle\left(\tilde{J}^{\prime}(0), \tilde{\gamma}^{\prime}(0)\right).
+  \end{aligned}  
+  $$
+  For more details see \cite{ChenWeiHuan2002}, Theorem 5.1, p. 342. 
+\end{remark}
 
 \bibliographystyle{unsrt}
 \bibliography{NoteRef}
