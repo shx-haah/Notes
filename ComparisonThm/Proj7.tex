@@ -350,7 +350,7 @@ in $T_pM, T_{\widetilde{p}}\widetilde{M}$, respectively, and describe $(\exp_{p}
 % with $\widetilde{J}(0) = 0, \dot{\widetilde{J}}(0) = X, \widetilde{J}(1) = (\exp_{p})_* X$. Similarly, using $\widetilde{\gamma}_u(t) = \exp_{p} t(x+u\widetilde{X})$, 
 % we have $J(t)$, which is the Jacobi field along $\widetilde{\gamma}$, with $J(0) = 0, \dot{J}(0) = \widetilde{X}, J(1) = (\exp_{p})_* \widetilde{X}$. 
 By these observations, we can restate the Rauch comparison theorem with slight generalization of $\widetilde{M}$ as follows:
-\begin{theorem}[Rauch comparison theorem]
+\begin{theorem}[Rauch Comparison Theorem]\label{RCT}
   Let $\gamma:[0, a] \rightarrow M^n$ and $\tilde{\gamma}:[0, a] \rightarrow \tilde{M}^{n+k}$, $k \geq 0$, be geodesics with the same velocity 
   (i.e. $\left.\left|\gamma^{\prime}(t)\right|=\left|\tilde{\gamma}^{\prime}(t)\right|\right)$. 
   Let $J$ and $\tilde{J}$ be normal Jacobi fields along $\gamma$ and $\tilde{\gamma}$, respectively, with $J(0)=\tilde{J}(0)=0$ such that
@@ -403,9 +403,9 @@ By these observations, we can restate the Rauch comparison theorem with slight g
   \Phi(t) = (ff' - \tilde{f}'f)(t).
   $$ 
   It is known that when $\tilde{f},f \geq 0$, we always have $\Phi'(t) \geq 0$. 
-  In fact, $f>0$ on $(0,a]$, which will be illustrated later. Therefore, since $\Phi(0)=0$, we have
+  Guaranteed by $f'(0)>0$, there exists $0<r\leq a$ such that $f>0$ on $(0,r)$. Therefore, since $\Phi(0)=0$, we have
   $$
-  \Phi(t) \geq 0, \quad \forall t \in [0,a].
+  \Phi(t) \geq 0, \quad \forall t \in [0,r].
   $$
   Then rewrite $\Phi \geq 0$ as
   \begin{equation}
@@ -415,29 +415,31 @@ By these observations, we can restate the Rauch comparison theorem with slight g
   $$
   \ln\frac{f(t)}{f(\epsilon)} \geq \ln\frac{\tilde{f}(t)}{\tilde{f}(\epsilon)}
   $$
-  where $0 < \epsilon < t \leq a$. Therefore,
+  where $0 < \epsilon < t < r$. Therefore,
   \begin{equation}
     \frac{f(t)}{\tilde{f}(t)} \geq \lim_{\epsilon \rightarrow 0} \frac{f(\epsilon)}{\tilde{f}(\epsilon)} = \frac{b}{b} = 1.
   \end{equation}
-  Thus we have $f(t) \geq \tilde{f}(t), \forall t \in (0,a]$. 
+  Thus we have $f(t) \geq \tilde{f}(t), \forall t \in (0,r)$, and furthermore, $f \geq \tilde{f}$ on $[0,r]$.
 
-  Now we prove that $f>0$ on $(0,a]$. Otherwise, there exists $r\in (0,a)$ such that $f(r)=0$ and for any $t\in (0,r)$, $f(t)>0$ (notice that $f'(0)>0$). 
-  Thus, $\tilde{f},f > 0$ on $(0,r)$. Taking $t\rightarrow r$ in (3), we have
+  To illustrate one can set $r=a$, we prove that $f>0$ on $(0,a]$. Otherwise, there exists $c\in (0,a)$ such that $f(c)=0$ and $f(t)>0$ on $(0,c)$. 
+  Taking $r=c$, repeat the above steps and we have: as $t\rightarrow c$ in limit (3),
   $$
-  0=f(r)\geq \tilde{f}(r)>0, 
+  0=f(c)\geq \tilde{f}(c)>0, 
   $$
   which leads to a contradiction.
 \end{proof}
 
-For general situations, let 
+\hypertarget{GSpre}{For general situations}, let 
 $$
 f(t)=\langle J(t),J(t)\rangle,\quad \widetilde{f}(t)=\langle \widetilde{J}(t),\widetilde{J}(t)\rangle.
 $$
-Motivated by above proof, if $f(a) \geq \tilde{f}(a)$ holds, it is necessary to prove: 
+Motivated by above proof, we want to prove: 
 $$
-\lim_{\epsilon \rightarrow 0} \frac{f(\epsilon)}{\tilde{f}(\epsilon)} = 1 \quad \text{ and } \quad \frac{f' }{f} \geq \frac{\tilde{f}'}{\tilde{f}}, \text{ on } (0,a] \text{ on which } \tilde{f},f > 0.
+\lim_{\epsilon \rightarrow 0} \frac{f(\epsilon)}{\tilde{f}(\epsilon)} = 1, \quad \quad \frac{f' }{f} \geq \frac{\tilde{f}'}{\tilde{f}} \text{ on } (0,r)\quad \text{ and } \quad 
+\tilde{f},f > 0 \text{ on } (0,a],
 $$
-The former can be obtained by L'Hospital's rule:
+where $0<r\leq a$ such that $f>0$ on $(0,r)$.
+The first can be obtained by L'Hospital's rule:
 $$
 \begin{aligned}
 \lim _{t \rightarrow 0} \frac{f(t)}{\tilde{f}(t)} 
@@ -447,10 +449,11 @@ $$
 & =\frac{\left|J^{\prime}(0)\right|^2}{\left|\tilde{J}^{\prime}(0)\right|^2}=1.
 \end{aligned}
 $$
-To prove $\tilde{f},f > 0$ on $(0,a]$, let's assume that $\tilde{J}$ is a non-zero Jacobi field; otherwise, the conclusion is trivial. 
+To prove $\tilde{f},f > 0$ on $(0,a]$, assume that $\tilde{J}$ is a non-zero Jacobi field; otherwise, the conclusion is trivial. 
 Since there are no conjugate points to $\tilde{\gamma}(0)$ along $\tilde{\gamma}$, the function $|\tilde{J}(t)|$ has no zeros other than $t=0$, 
-i.e. $\tilde{f} > 0$ on $(0,a]$. Also, one can prove $f>0$ on $(0,a]$ in the same way as the final part of the proof for the case $n=2$, provided the latter inequality holds true. 
-However, to verify the inequality, one needs the minimal property of Jacobi fields which is known as the basic index lemma.
+i.e. $\tilde{f} > 0$ on $(0,a]$. On the other hand, since $|J'(0)|>0$, there exists $0<r\leq a$ such that $f>0$ on $(0,r)$. 
+Then one can prove $f>0$ on $(0,a]$ in the same way as the case $n=2$, provided the second inequality holds for $(0,r)$.  
+However, to verify this inequality, one needs the minimal property of Jacobi fields which is known as the basic index lemma.
 
 % \begin{theorem}
 %   Let $\gamma:[0, a] \rightarrow \widetilde{M}, \widetilde{\gamma}:[0, a] \rightarrow M$ be both normal geodesics, where $\operatorname{dim} \widetilde{M} = \operatorname{dim} M$. 
@@ -574,40 +577,120 @@ In a certain sense, Jacobi fields minimize the index form.
   and equality holds only if $V=W$.
 \end{lemma}
 
-We are now in the position to prove Rauch Comparison Theorem.
+We are now in the position to prove \underline{\hyperref[RCT]{Rauch Comparison Theorem}}.
 \begin{proof}[Proof of Theorem 2]
-  首先考虑 $J \perp \gamma^{\prime}, \tilde{J} \perp \tilde{\gamma}^{\prime}$ 的情形. 此时,
+  % 要证明的结论是
+  % $$
+  % \frac{|J(t)|^2}{|\tilde{J}(t)|^2} \geq 1, \quad \forall t \in(0, l] .
+  % $$
+  % \underline{\hyperlink{GSpre}{由之前的分析}}: 
+  % $$
+  % \lim _{t \rightarrow 0} \frac{|J(t)|^2}{|\tilde{J}(t)|^2}=1 \quad \text{ and } \quad |\tilde{J}|,|J|,>0 \text{ on } (0, l]. 
+  % $$
+  % 因此, 只需要证明
+  % $$
+  % \frac{\left\langle J^{\prime}, J\right\rangle}{\langle J, J\rangle} \geq \frac{\left\langle\tilde{J}^{\prime}, \tilde{J}\right\rangle}{\langle\tilde{J}, \tilde{J}\rangle}, \quad t \in(0, r],
+  % $$
+  % 其中 $r \in(0, l]$, 使得 Jacobi 场 $J$ 在 $(0, r)$ 上无零点. 
+  The conclusion we want to prove is:
   $$
-  J(0)=\tilde{J}(0)=0, \quad\left|J^{\prime}(0)\right|=\left|\tilde{J}^{\prime}(0)\right| .
+  \frac{|J(t)|^2}{|\tilde{J}(t)|^2} \geq 1, \quad \forall t \in (0, l].
   $$
-  要证明的结论是
+  By \underline{\hyperlink{GSpre}{previous analysis}}, we have 
   $$
-  \frac{|J(t)|^2}{|\tilde{J}(t)|^2} \geq 1, \quad \forall t \in(0, l] .
+  \lim _{t \rightarrow 0} \frac{|J(t)|^2}{|\tilde{J}(t)|^2}=1, \quad \text{and} \quad |\tilde{J}|, |J| > 0 \text{ on } (0, l].
   $$
-  利用 L'Hospital 法则和 (5.1) 式得到
+  Therefore, we only need to prove:
+  $$
+  \frac{\left\langle J^{\prime}, J\right\rangle}{\langle J, J\rangle} \geq \frac{\left\langle\tilde{J}^{\prime}, \tilde{J}\right\rangle}{\langle\tilde{J}, \tilde{J}\rangle}, \quad t \in (0, r],
+  $$
+  where $r \in (0, l]$, ensuring that the Jacobi field $J$ has no zeros on $(0, r)$.
+  
+  
+  对于任意取定的 $t_1 \in(0, r)$, 由于$J\left(t_1\right) \neq 0$, 可以令
+  $$
+  W_{t_1}(t)=\frac{J(t)}{\left|J\left(t_1\right)\right|}, \quad \tilde{W}_{t_1}(t)=\frac{\tilde{J}(t)}{\left|\tilde{J}\left(t_1\right)\right|} .
+  $$
+  则 (5.4) 式在 $t=t_1$ 处成立成立当且仅当
+  $$
+  \left.\left\langle W_{t_1}^{\prime}(t), W_{t_1}(t)\right\rangle\right|_{t=t_1} \geq\left.\left\langle\tilde{W}_{t_1}^{\prime}(t), \tilde{W}_{t_1}(t)\right\rangle\right|_{t=t_1} .
+  $$
+  因为 $W_{t_1}, \tilde{W}_{t_1}$ 分别是 $\gamma$ 和 $\tilde{\gamma}$ 上在 $t=0$ 处取零值的 Jacobi 场, 所以 由命题 4.1 可知
   $$
   \begin{aligned}
-  \lim _{t \rightarrow 0} \frac{|J(t)|^2}{|\tilde{J}(t)|^2} & =\lim _{t \rightarrow 0} \frac{\left\langle J^{\prime}(t), J(t)\right\rangle}{\left\langle\tilde{J}^{\prime}(t), \tilde{J}(t)\right\rangle} \\
-  & =\lim _{t \rightarrow 0} \frac{\left\langle J^{\prime \prime}(t), J(t)\right\rangle+\left\langle J^{\prime}(t), J^{\prime}(t)\right\rangle}{\left\langle\tilde{J}^{\prime \prime}(t), \tilde{J}(t)\right\rangle+\left\langle\tilde{J}^{\prime}(t), \tilde{J}^{\prime}(t)\right\rangle} \\
-  & =\frac{\left|J^{\prime}(0)\right|^2}{\left|\tilde{J}^{\prime}(0)\right|^2}=1 .
+  & \left.\left\langle W_{t_1}^{\prime}(t), W_{t_1}(t)\right\rangle\right|_{t=t_1}=I_0^{t_1}\left(W_{t_1}, W_{t_1}\right), \\
+  & \left.\left\langle\tilde{W}_{t_1}^{\prime}(t), \tilde{W}_{t_1}(t)\right\rangle\right|_{t=t_1}=\tilde{I}_0^{t_1}\left(\tilde{W}_{t_1}, \tilde{W}_{t_1}\right),
   \end{aligned}
   $$
-  因此, 只需要证明 $\frac{|J(t)|^2}{|\tilde{J}(t)|^2}$ 是 $t$ 的增函数, 即对于任意的 $t>0$ 有
+  这里的 $I$ 和 $\tilde{I}$ 分别是 $M, \tilde{M}$ 中沿测地线 $\gamma, \tilde{\gamma}$ 的指标形式. 这样, 要证 明的 (5.5) 式就等价于指标形式的不等式
   $$
-  \frac{\mathrm{d}}{\mathrm{d} t}\left(\frac{|J(t)|^2}{|\tilde{J}(t)|^2}\right) \geq 0 .
+  I_0^{t_1}\left(W_{t_1}, W_{t_1}\right) \geq \tilde{I}_0^{t_1}\left(\tilde{W}_{t_1}, \tilde{W}_{t_1}\right) .
   $$
-  又因为在 $J(t) \neq 0$ 的点处,
+  在下面把 $M$ 中沿 $\left.\gamma\right|_{\left[0, t_1\right]}$ 定义的向量场 $W_{t_1}$ 转变为 $\tilde{M}$ 中沿 $\left.\tilde{\gamma}\right|_{\left[0, t_1\right]}$ 的向量场 $U(t)$, 使得
+  $$
+  |U(t)|=\left|W_{t_1}(t)\right|, \quad\left|U^{\prime}(t)\right|=\left|W_{t_1}^{\prime}(t)\right|,
+  $$
+  并且 $U$ 和 $\tilde{W}_{t_1}$ 在 $\left.\tilde{\gamma}\right|_{\left[0, t_1\right]}$ 的两端取相同的值. 这样, 对于
+  $$
+  \tilde{I}_0^{t_1}(U, U) \text { 和 } \tilde{I}_0^{t_1}\left(\tilde{W}_{t_1}, \tilde{W}_{t_1}\right)
+  $$
+  就可以运用基本指标引理作比较; 同时根据关于 $M, \tilde{M}$ 的截面曲率的 假定对于 $\tilde{I}_0^{t_1}(U, U)$ 和 $I_0^{t_1}\left(W_{t_1}, W_{t_1}\right)$ 进行比较.
+  沿 $\gamma, \tilde{\gamma}$ 分别取平行的单位正交标架场 $\left\{e_i(t)\right\}$ 和 $\left\{\tilde{e}_i(t)\right\}$, 使得
+  $$
+  \begin{array}{ll}
+  e_1(t)=\gamma^{\prime}(t), & e_2\left(t_1\right)=W_{t_1}\left(t_1\right), \\
+  \tilde{e}_1(t)=\tilde{\gamma}^{\prime}(t), & \tilde{e}_2\left(t_1\right)=\tilde{W}_{t_1}\left(t_1\right) .
+  \end{array}
+  $$
+  因为 $J \perp \gamma^{\prime}$, 所以可设
+  $$
+  W_{t_1}(t)=\sum_{i=2}^m W^i(t) e_i(t),
+  $$
+  其中的 $W^i(t)$ 满足条件
   $$
   \begin{aligned}
-  \frac{1}{2} \frac{\mathrm{d}}{\mathrm{d} t}\left(\frac{|J(t)|^2}{|\tilde{J}(t)|^2}\right) & =\frac{\left\langle J^{\prime}, J\right\rangle}{\langle\tilde{J}, \tilde{J}\rangle}-\frac{\langle J, J\rangle\left\langle\tilde{J}^{\prime}, \tilde{J}\right\rangle}{\langle\tilde{J}, \tilde{J}\rangle^2} \\
-  & =\frac{\langle J, J\rangle}{\langle\tilde{J}, \tilde{J}\rangle}\left(\frac{\left\langle J^{\prime}, J\right\rangle}{\langle J, J\rangle}-\frac{\left\langle\tilde{J}^{\prime}, \tilde{J}\right\rangle}{\langle\tilde{J}, \tilde{J}\rangle}\right) .
+  & W^2(0)=\cdots=W^m(0)=0, \\
+  & W^2\left(t_1\right)=1, \quad W^3\left(t_1\right)=\cdots=W^m\left(t_1\right)=0 .
   \end{aligned}
   $$
-  所以, 只需要证明 $J$ 在 $(0, l]$ 上处处不为零并且
+  沿测地线 $\tilde{\gamma}$ 定义向量场 $U(t)=\sum_{i=2}^m W^i(t) \tilde{e}_i(t)$, 则
   $$
-  \frac{\left\langle J^{\prime}, J\right\rangle}{\langle J, J\rangle} \geq \frac{\left\langle\tilde{J}^{\prime}, \tilde{J}\right\rangle}{\langle\tilde{J}, \tilde{J}\rangle}, \quad t \in(0, l] .
+  U(0)=\tilde{W}_{t_1}(0)=0, \quad U\left(t_1\right)=\tilde{e}_2\left(t_1\right)=\tilde{W}_{t_1}\left(t_1\right) .
   $$
-  假定 $r \in(0, l]$, 使得 Jacobi 场 $J$ 在 $(0, r)$ 上无零点. 首先要证 明 (5.4) 式在区间 $(0, r)$ 上成立. 对于任意取定的 $t_1 \in(0, r)$, 由于
+  由于在 $\left.\tilde{\gamma}\right|_{\left[0, t_1\right]}$ 上没有 $\tilde{\gamma}(0)$ 的共轭点, 根据基本指标引理,
+  $$
+  \tilde{I}_0^{t_1}(U, U) \geq \tilde{I}_0^{t_1}\left(\tilde{W}_{t_1}, \tilde{W}_{t_1}\right) .
+  $$
+  在另一方面, 根据定义有
+  $$
+  \begin{aligned}
+  I_0^{t_1}\left(W_{t_1}, W_{t_1}\right) & =\int_0^{t_1}\left\{\left|W_{t_1}^{\prime}\right|^2+\left\langle\mathcal{R}\left(\gamma^{\prime}, W_{t_1}\right) \gamma^{\prime}, W_{t_1}\right)\right\} \mathrm{d} t \\
+  & =\int_0^{t_1}\left\{\left|W_{t_1}^{\prime}\right|^2-\left|W_{t_1}\right|^2 K\left(\gamma^{\prime}, W_{t_1}\right)\right\} \mathrm{d} t, \\
+  \tilde{I}_0^{t_1}(U, U) & =\int_0^{t_1}\left\{\left|U^{\prime}\right|^2+\left\langle\tilde{\mathcal{R}}\left(\tilde{\gamma}^{\prime}, U\right) \tilde{\gamma}^{\prime}, U\right\rangle\right\} \mathrm{d} t \\
+  & =\int_0^{t_1}\left\{\left|U^{\prime}\right|^2-|U|^2 \tilde{K}\left(\tilde{\gamma}^{\prime}, U\right)\right\} \mathrm{d} t .
+  \end{aligned}
+  $$
+  根据向量场 $U$ 的构造可知
+  $$
+  |U(t)|^2=\left|W_{t_1}(t)\right|^2, \quad\left|U^{\prime}(t)\right|^2=\left|W_{t_1}^{\prime}(t)\right|^2 .
+  $$
+  再由定理的假设, $K\left(\gamma^{\prime}, W_{t_1}\right) \leq \tilde{K}\left(\tilde{\gamma}^{\prime}, U\right)$, 所以
+  $$
+  I_0^{t_1}\left(W_{t_1}, W_{t_1}\right) \geq \tilde{I}_0^{t_1}(U, U) .
+  $$
+  结合 (5.7) 和 (5.8) 两式便得到
+  $$
+  I_0^{t_1}\left(W_{t_1}, W_{t_1}\right) \geq \tilde{I}_0^{t_1}\left(\tilde{W}_{t_1}, \tilde{W}_{t_1}\right),
+  $$
+  此即要证明的不等式 (5.5).
+  至此, 已经证明: 对于任意的 $t \in(0, r)$ 有
+  $$
+  \frac{\left\langle J^{\prime}(t), J(t)\right\rangle}{\langle J(t), J(t)\rangle} \geq \frac{\left\langle\tilde{J}^{\prime}(t), \tilde{J}(t)\right\rangle}{\langle\tilde{J}(t), \tilde{J}(t)\rangle},
+  $$
+  即
+  $$
+  \frac{|J(t)|^2}{|\tilde{J}(t)|^2} \geq 1 \text {, 或等价地, }|J(t)|^2 \geq|\tilde{J}(t)|^2 \text {. }
+  $$
 \end{proof}
 \begin{remark}
   Rauch Comparison Theorem still holds when $J(0),\tilde{J}(0)\neq 0$ or moreover, $J$ and $\tilde{J}$ are not normal Jacobi fields. 
