@@ -601,95 +601,100 @@ We are now in the position to prove \underline{\hyperref[RCT]{Rauch Comparison T
   \lim _{t \rightarrow 0} \frac{|J(t)|^2}{|\tilde{J}(t)|^2}=1, \quad \text{and} \quad |\tilde{J}|, |J| > 0 \text{ on } (0, l].
   $$
   Therefore, we only need to prove:
-  $$
-  \frac{\left\langle J^{\prime}, J\right\rangle}{\langle J, J\rangle} \geq \frac{\left\langle\tilde{J}^{\prime}, \tilde{J}\right\rangle}{\langle\tilde{J}, \tilde{J}\rangle}, \quad t \in (0, r],
-  $$
+  \begin{equation}
+    \frac{\left\langle J^{\prime}, J\right\rangle}{\langle J, J\rangle} \geq \frac{\left\langle\tilde{J}^{\prime}, \tilde{J}\right\rangle}{\langle\tilde{J}, \tilde{J}\rangle}, \quad t \in (0, r],
+  \end{equation}
   where $r \in (0, l]$, ensuring that the Jacobi field $J$ has no zeros on $(0, r)$.
   
-  
-  对于任意取定的 $t_1 \in(0, r)$, 由于$J\left(t_1\right) \neq 0$, 可以令
+  For any fixed $t_1 \in (0, r)$, since $J(t_1) \neq 0$, we can define
   $$
-  W_{t_1}(t)=\frac{J(t)}{\left|J\left(t_1\right)\right|}, \quad \tilde{W}_{t_1}(t)=\frac{\tilde{J}(t)}{\left|\tilde{J}\left(t_1\right)\right|} .
+  W_{t_1}(t) = \frac{J(t)}{\left|J(t_1)\right|} \quad \text{and} \quad \tilde{W}_{t_1}(t) = \frac{\tilde{J}(t)}{\left|\tilde{J}(t_1)\right|}.
   $$
-  则 (5.4) 式在 $t=t_1$ 处成立成立当且仅当
-  $$
-  \left.\left\langle W_{t_1}^{\prime}(t), W_{t_1}(t)\right\rangle\right|_{t=t_1} \geq\left.\left\langle\tilde{W}_{t_1}^{\prime}(t), \tilde{W}_{t_1}(t)\right\rangle\right|_{t=t_1} .
-  $$
-  因为 $W_{t_1}, \tilde{W}_{t_1}$ 分别是 $\gamma$ 和 $\tilde{\gamma}$ 上在 $t=0$ 处取零值的 Jacobi 场, 所以 由命题 4.1 可知
+  Then, equation (4) holds at $t = t_1$ if and only if
+  \begin{equation}
+    \left.\left\langle W_{t_1}^{\prime}(t), W_{t_1}(t)\right\rangle\right|_{t=t_1} \geq \left.\left\langle\tilde{W}_{t_1}^{\prime}(t), \tilde{W}_{t_1}(t)\right\rangle\right|_{t=t_1}.
+  \end{equation}
+  Because $W_{t_1}$ and $\tilde{W}_{t_1}$ are Jacobi fields on $\gamma$ and $\tilde{\gamma}$, respectively, both of which are zero at $t = 0$, we can write them as:
   $$
   \begin{aligned}
   & \left.\left\langle W_{t_1}^{\prime}(t), W_{t_1}(t)\right\rangle\right|_{t=t_1}=I_0^{t_1}\left(W_{t_1}, W_{t_1}\right), \\
   & \left.\left\langle\tilde{W}_{t_1}^{\prime}(t), \tilde{W}_{t_1}(t)\right\rangle\right|_{t=t_1}=\tilde{I}_0^{t_1}\left(\tilde{W}_{t_1}, \tilde{W}_{t_1}\right),
   \end{aligned}
   $$
-  这里的 $I$ 和 $\tilde{I}$ 分别是 $M, \tilde{M}$ 中沿测地线 $\gamma, \tilde{\gamma}$ 的指标形式. 这样, 要证 明的 (5.5) 式就等价于指标形式的不等式
+  where $I$ and $\tilde{I}$ are the index forms along the geodesics $\gamma$ and $\tilde{\gamma}$ in $M$ and $\tilde{M}$, respectively. 
+  Thus, the inequality to be proven in equation (5) is equivalent to an inequality involving the index forms:
   $$
-  I_0^{t_1}\left(W_{t_1}, W_{t_1}\right) \geq \tilde{I}_0^{t_1}\left(\tilde{W}_{t_1}, \tilde{W}_{t_1}\right) .
+  I_0^{t_1}\left(W_{t_1}, W_{t_1}\right) \geq \tilde{I}_0^{t_1}\left(\tilde{W}_{t_1}, \tilde{W}_{t_1}\right).
   $$
-  在下面把 $M$ 中沿 $\left.\gamma\right|_{\left[0, t_1\right]}$ 定义的向量场 $W_{t_1}$ 转变为 $\tilde{M}$ 中沿 $\left.\tilde{\gamma}\right|_{\left[0, t_1\right]}$ 的向量场 $U(t)$, 使得
+
+  In the following, we transform the vector field $W_{t_1}$ defined along $\left.\gamma\right|_{\left[0, t_1\right]}$ in $M$ 
+  into a vector field $U(t)$ defined along $\left.\tilde{\gamma}\right|_{\left[0, t_1\right]}$ in $\tilde{M}$. This transformation ensures that:
   $$
-  |U(t)|=\left|W_{t_1}(t)\right|, \quad\left|U^{\prime}(t)\right|=\left|W_{t_1}^{\prime}(t)\right|,
+  |U(t)| = \left|W_{t_1}(t)\right| \quad \text{and} \quad \left|U^{\prime}(t)\right| = \left|W_{t_1}^{\prime}(t)\right|,
   $$
-  并且 $U$ 和 $\tilde{W}_{t_1}$ 在 $\left.\tilde{\gamma}\right|_{\left[0, t_1\right]}$ 的两端取相同的值. 这样, 对于
-  $$
-  \tilde{I}_0^{t_1}(U, U) \text { 和 } \tilde{I}_0^{t_1}\left(\tilde{W}_{t_1}, \tilde{W}_{t_1}\right)
-  $$
-  就可以运用基本指标引理作比较; 同时根据关于 $M, \tilde{M}$ 的截面曲率的 假定对于 $\tilde{I}_0^{t_1}(U, U)$ 和 $I_0^{t_1}\left(W_{t_1}, W_{t_1}\right)$ 进行比较.
-  沿 $\gamma, \tilde{\gamma}$ 分别取平行的单位正交标架场 $\left\{e_i(t)\right\}$ 和 $\left\{\tilde{e}_i(t)\right\}$, 使得
+  Furthermore, $U$ and $\tilde{W}_{t_1}$ take the same values at both ends of $\left.\tilde{\gamma}\right|_{\left[0, t_1\right]}$. With this setup, 
+  we can use the Basic Index Lemma to compare $\tilde{I}_0^{t_1}(U, U)$ and $\tilde{I}_0^{t_1}\left(\tilde{W}_{t_1}, \tilde{W}_{t_1}\right)$. 
+  Additionally, based on the assumptions about the sectional curvatures of $M$ and $\tilde{M}$, we can compare $\tilde{I}_0^{t_1}(U, U)$ and $I_0^{t_1}\left(W_{t_1}, W_{t_1}\right)$.
+
+  Along $\gamma$ and $\tilde{\gamma}$, respectively, we take parallel unit orthogonal frames $\left\{e_i(t)\right\}$ and $\left\{\tilde{e}_i(t)\right\}$ such that:
   $$
   \begin{array}{ll}
   e_1(t)=\gamma^{\prime}(t), & e_2\left(t_1\right)=W_{t_1}\left(t_1\right), \\
-  \tilde{e}_1(t)=\tilde{\gamma}^{\prime}(t), & \tilde{e}_2\left(t_1\right)=\tilde{W}_{t_1}\left(t_1\right) .
+  \tilde{e}_1(t)=\tilde{\gamma}^{\prime}(t), & \tilde{e}_2\left(t_1\right)=\tilde{W}_{t_1}\left(t_1\right).
   \end{array}
   $$
-  因为 $J \perp \gamma^{\prime}$, 所以可设
+  Since $J \perp \gamma^{\prime}$, we can express $W_{t_1}(t)$ as:
   $$
   W_{t_1}(t)=\sum_{i=2}^m W^i(t) e_i(t),
   $$
-  其中的 $W^i(t)$ 满足条件
+  where $W^i(t)$ satisfies the conditions:
   $$
   \begin{aligned}
   & W^2(0)=\cdots=W^m(0)=0, \\
-  & W^2\left(t_1\right)=1, \quad W^3\left(t_1\right)=\cdots=W^m\left(t_1\right)=0 .
+  & W^2\left(t_1\right)=1, \quad W^3\left(t_1\right)=\cdots=W^m\left(t_1\right)=0.
   \end{aligned}
   $$
-  沿测地线 $\tilde{\gamma}$ 定义向量场 $U(t)=\sum_{i=2}^m W^i(t) \tilde{e}_i(t)$, 则
+  Defining the vector field $U(t)$ along the geodesic $\tilde{\gamma}$ as:
   $$
-  U(0)=\tilde{W}_{t_1}(0)=0, \quad U\left(t_1\right)=\tilde{e}_2\left(t_1\right)=\tilde{W}_{t_1}\left(t_1\right) .
+  U(t)=\sum_{i=2}^m W^i(t) \tilde{e}_i(t),
   $$
-  由于在 $\left.\tilde{\gamma}\right|_{\left[0, t_1\right]}$ 上没有 $\tilde{\gamma}(0)$ 的共轭点, 根据基本指标引理,
+  we have:
   $$
-  \tilde{I}_0^{t_1}(U, U) \geq \tilde{I}_0^{t_1}\left(\tilde{W}_{t_1}, \tilde{W}_{t_1}\right) .
+  U(0)=\tilde{W}_{t_1}(0)=0, \quad U\left(t_1\right)=\tilde{e}_2\left(t_1\right)=\tilde{W}_{t_1}\left(t_1\right).
   $$
-  在另一方面, 根据定义有
+  Since there are no conjugate points to $\tilde{\gamma}(0)$ along $\left.\tilde{\gamma}\right|_{\left[0, t_1\right]}$, according to the Basic Index Lemma:
+  \begin{equation}
+    \tilde{I}_0^{t_1}(U, U) \geq \tilde{I}_0^{t_1}\left(\tilde{W}_{t_1}, \tilde{W}_{t_1}\right).
+  \end{equation}
+
+  On the other hand, according to the definitions, we have:
   $$
   \begin{aligned}
-  I_0^{t_1}\left(W_{t_1}, W_{t_1}\right) & =\int_0^{t_1}\left\{\left|W_{t_1}^{\prime}\right|^2+\left\langle\mathcal{R}\left(\gamma^{\prime}, W_{t_1}\right) \gamma^{\prime}, W_{t_1}\right)\right\} \mathrm{d} t \\
+  I_0^{t_1}\left(W_{t_1}, W_{t_1}\right) & =\int_0^{t_1}\left\{\left|W_{t_1}^{\prime}\right|^2+\left\langle\mathcal{R}\left(\gamma^{\prime}, W_{t_1}\right) \gamma^{\prime}, W_{t_1}\right\rangle\right\} \mathrm{d} t \\
   & =\int_0^{t_1}\left\{\left|W_{t_1}^{\prime}\right|^2-\left|W_{t_1}\right|^2 K\left(\gamma^{\prime}, W_{t_1}\right)\right\} \mathrm{d} t, \\
   \tilde{I}_0^{t_1}(U, U) & =\int_0^{t_1}\left\{\left|U^{\prime}\right|^2+\left\langle\tilde{\mathcal{R}}\left(\tilde{\gamma}^{\prime}, U\right) \tilde{\gamma}^{\prime}, U\right\rangle\right\} \mathrm{d} t \\
   & =\int_0^{t_1}\left\{\left|U^{\prime}\right|^2-|U|^2 \tilde{K}\left(\tilde{\gamma}^{\prime}, U\right)\right\} \mathrm{d} t .
   \end{aligned}
   $$
-  根据向量场 $U$ 的构造可知
+  Based on the construction of the vector field $U$, we know that:
   $$
   |U(t)|^2=\left|W_{t_1}(t)\right|^2, \quad\left|U^{\prime}(t)\right|^2=\left|W_{t_1}^{\prime}(t)\right|^2 .
   $$
-  再由定理的假设, $K\left(\gamma^{\prime}, W_{t_1}\right) \leq \tilde{K}\left(\tilde{\gamma}^{\prime}, U\right)$, 所以
+  Furthermore, according to the assumptions of the theorem, $K\left(\gamma^{\prime}, W_{t_1}\right) \leq \tilde{K}\left(\tilde{\gamma}^{\prime}, U\right)$, so we have 
   $$
   I_0^{t_1}\left(W_{t_1}, W_{t_1}\right) \geq \tilde{I}_0^{t_1}(U, U) .
   $$
-  结合 (5.7) 和 (5.8) 两式便得到
+  Therefore, combining it with equations (6), we obtain:
   $$
   I_0^{t_1}\left(W_{t_1}, W_{t_1}\right) \geq \tilde{I}_0^{t_1}\left(\tilde{W}_{t_1}, \tilde{W}_{t_1}\right),
   $$
-  此即要证明的不等式 (5.5).
-  至此, 已经证明: 对于任意的 $t \in(0, r)$ 有
+  which is the inequality (5) we wanted to prove. Therefore, we have shown that for any $t \in (0, r)$:
   $$
   \frac{\left\langle J^{\prime}(t), J(t)\right\rangle}{\langle J(t), J(t)\rangle} \geq \frac{\left\langle\tilde{J}^{\prime}(t), \tilde{J}(t)\right\rangle}{\langle\tilde{J}(t), \tilde{J}(t)\rangle},
   $$
-  即
+  or equivalently:
   $$
-  \frac{|J(t)|^2}{|\tilde{J}(t)|^2} \geq 1 \text {, 或等价地, }|J(t)|^2 \geq|\tilde{J}(t)|^2 \text {. }
+  \frac{|J(t)|^2}{|\tilde{J}(t)|^2} \geq 1 \text {, or equivalently, }|J(t)|^2 \geq|\tilde{J}(t)|^2 \text {. }
   $$
 \end{proof}
 \begin{remark}
