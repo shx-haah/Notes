@@ -500,27 +500,25 @@ $$
 $$
 multiplied by the basis vector $\left(\frac{d}{d t}\right)_{F(p)} \in T_{F(p)}\mathbb{R}$. 
 
-A variation of $\omega$ denoted by $\bar{\alpha}(u)=\alpha(u,t)$ for $u\in (-\varepsilon,\varepsilon)$ may be considered as a "smooth path" in $\Omega$. 
-And more generally if $(-\varepsilon,\varepsilon)$ in the variation is replaced by a neighborhood of $0\in\mathbb{R}^n$, 
-then it is called an $n$-parameter variation of $\omega$. By analogy with the definition given above, if $F$ is a real valued function on $\Omega$, 
-we attempt to define $F_{*\omega}$
+A fixed endpoints variation of $\omega$ denoted by $\bar{\alpha}(u)=\alpha(u,t)$ for $u\in (-\varepsilon,\varepsilon)$ may be considered as 
+a "smooth path" in $\Omega$ (recall that a variation is a smooth map). And more generally if $u$ in the variation is defined on a neighborhood of $0\in\mathbb{R}^n$, 
+then it is called an $n$-parameter variation of $\omega$. By analogy, if $F$ is a real valued function on $\Omega$, we attempt to define $F_{*\omega}$
 % $$
 % F_{*\omega}: T_\omega\Omega \rightarrow T_{F(\omega)}\mathbb{R}
 % $$
 as follows. Given $W \in T_\omega \Omega$ choose a variation $\bar{\alpha}:(-\varepsilon, \varepsilon) \rightarrow \Omega$ with
 $$
-\bar{\alpha}(0)=\omega, \frac{d \bar{\alpha}}{d u}(0)=W
+\bar{\alpha}(0)=\omega,\quad \frac{d \bar{\alpha}}{d u}(0)=W
 $$
 and set $F_{* \omega}(W)$ equal to $\left.\frac{d(F(\bar{\alpha}(u))}{d u}\right|_{u=0}$ multiplied by the tangent vector
 $\left(\frac{d}{d t}\right)_{F(\omega)}$. Of course without hypothesis on $F$ there is no guarantee that
 this derivative will exist, or will be independent of the choice of $\bar{\alpha}$.
 We will not investigate what conditions $F$ must satisfy but we have indicated how $F_*$ might be defined only to motivate the following.
 \begin{definition}
-  A path $\omega$ is a critical path for a function $F: \Omega\rightarrow \mathbb{R}$ if and only if
+  A path $\omega$ is a critical path for a function $F: \Omega\rightarrow \mathbb{R}$ if and only if for any variation of $\omega$,
   $$
-  \left.\frac{d(F(\alpha(u))}{d u}\right|_{u=0},
+  \left.\frac{d(F(\bar{\alpha}(u))}{d u}\right|_{u=0} = 0.
   $$
-  for every variation of $\omega$. 
 \end{definition}
 
 We denote the length of the piecewise smooth curve $\gamma:[a, b] \rightarrow M$ by $L(\gamma)$. By definition,
@@ -528,13 +526,13 @@ $$
 L(\gamma)=\int_a^b|\gamma^{\prime}(t)| \mathrm{d} t
 $$
 It follows from the chain rule that $L(\gamma)$ does not depend on a particular choice of parameterization. Then the length $L: \Omega\rightarrow\mathbb{R}$ is a real valued 
-function on $\Omega$. By first variation of arc length (\cite{ChenWeiHuan2002}, Section 3.3), we know that the path $\omega$ is a critical point for the function $L$ if and only if $\omega$ is a geodesic.
+function on $\Omega$. By first variation of arc length (\cite{ChenWeiHuan2002}, Corollary 3.6, p.190), we know that the path $\omega$ is a critical point for the function $L$ if and only if $\omega$ is a geodesic.
 
-Continuing with the analogy developed in the previous, we now wish to define a bilinear functional
+Continuing with the analogy developed in the previous, we now wish to define a bilinear functional, called the Hessian of $L$ at $\gamma$
 $$
 L_{* * \gamma}: T_\gamma \Omega\times T_\gamma \Omega\rightarrow \mathbb{R}
 $$
-when $\gamma$ is a critical point of the function $L$, i.e. a geodesic. This bilinear functional will be called the Hessian of $L$ at $\gamma$.
+when $\gamma$ is a critical point of the function $L$, i.e. a geodesic. 
 
 If $f$ is a real valued function on a Riemannian manifold $M$ with critical point $p$, then the Hessian
 $$
@@ -543,11 +541,11 @@ $$
 is a $(0,2)$-tensor can be defined as $\nabla^2 f=\nabla(df)$. Equivalently, given $X_1, X_2 \in T M_p$ choose a smooth map
 $\alpha: U\rightarrow M$ where $U$ is a neighborhood of $(0,0)$ in $\mathbb{R}^2$ such that 
 $$
-\alpha(0,0)=p, \frac{\partial \alpha}{\partial u_1}(0,0)=X_1, \frac{\partial \alpha}{\partial u_2}(0,0)=X_2 .
+\alpha(0,0)=p,\quad \frac{\partial \alpha}{\partial u_1}(0,0)=X_1,\quad \frac{\partial \alpha}{\partial u_2}(0,0)=X_2 .
 $$
 Then
 $$
-\nabla^2 f\left(X_1, X_2\right)=\left.\frac{\partial^2 f\left(\alpha\left(u_1, u_2\right)\right)}{\partial u_1 \partial u_2}\right|_{(0,0)}
+\nabla^2 f\left(X_1, X_2\right)=\left.\frac{\partial^2 f\left(\alpha\left(u_1, u_2\right)\right)}{\partial u_1 \partial u_2}\right|_{(0,0)}.
 $$
 This suggests defining $L_{* *}$ as follows. Given vector fields $W_1, W_2 \in T_\gamma\Omega$ choose a 2-parameter variation
 $\alpha: U \times[a,b] \rightarrow M$, such that
@@ -562,10 +560,15 @@ where $\bar{\alpha}\left(u_1, u_2\right) \in \Omega$ denotes the path $\bar{\alp
 By second variation formula theorem (\cite{Cheeger2008}, pp.16-18), $L_{* * \gamma}(W_1,W_2)$ is well defined symmetric and bilinear function and depends only on $W_1,W_2$ to $\gamma$. 
 This Hessian is a Morse index form and more generally, we write the index form as: 
 $$
-I_\gamma(V, W)=\int_a^b\left\langle\nabla_T V, \nabla_T W\right\rangle+\langle R(W, T) V, T\rangle\mathrm{d}t,
+I_\gamma(V, W)=\int_a^b\left\langle\nabla_T V, \nabla_T W\right\rangle+\langle R(W, T) V, T\rangle\mathrm{d}\,t,
 $$
-where $V$ and $W$ are smooth vectors fields along $\gamma$. For cases of piecewise smooth ones, see \cite{Cheeger2008}, pp.16-18 as well. Sometimes, we simply write 
-$I(V,W)$ or $I_a^b(V,W)$.
+where $V$ and $W$ are smooth vectors fields along $\gamma$. Sometimes, we simply write $I(V,W)$ or $I_a^b(V,W)$.
+Since $\left\langle\nabla_T V, \nabla_T W\right\rangle=\frac{\mathrm{d}}{\mathrm{d}t}\left\langle\nabla_T V, W\right\rangle-\left\langle\nabla_T \nabla_T V,  W\right\rangle$, 
+$I_\gamma(V, W)$ can be written as 
+$$
+I(V, W)=\left\langle\nabla_T V, W\right\rangle-\int_a^b\langle \nabla_T \nabla_T V - R(T, V) T, W\rangle\mathrm{d}\,t. 
+$$
+For cases of piecewise smooth ones, see \cite{Cheeger2008}, pp.16-18 as well.
 
 In a certain sense, Jacobi fields minimize the index form. 
 \begin{lemma}[Basic index lemma]
@@ -579,32 +582,19 @@ In a certain sense, Jacobi fields minimize the index form.
 
 We are now in the position to prove \underline{\hyperref[RCT]{Rauch Comparison Theorem}}.
 \begin{proof}[Proof of Theorem 2]
-  % 要证明的结论是
-  % $$
-  % \frac{|J(t)|^2}{|\tilde{J}(t)|^2} \geq 1, \quad \forall t \in(0, l] .
-  % $$
-  % \underline{\hyperlink{GSpre}{由之前的分析}}: 
-  % $$
-  % \lim _{t \rightarrow 0} \frac{|J(t)|^2}{|\tilde{J}(t)|^2}=1 \quad \text{ and } \quad |\tilde{J}|,|J|,>0 \text{ on } (0, l]. 
-  % $$
-  % 因此, 只需要证明
-  % $$
-  % \frac{\left\langle J^{\prime}, J\right\rangle}{\langle J, J\rangle} \geq \frac{\left\langle\tilde{J}^{\prime}, \tilde{J}\right\rangle}{\langle\tilde{J}, \tilde{J}\rangle}, \quad t \in(0, r],
-  % $$
-  % 其中 $r \in(0, l]$, 使得 Jacobi 场 $J$ 在 $(0, r)$ 上无零点. 
   The conclusion we want to prove is:
   $$
-  \frac{|J(t)|^2}{|\tilde{J}(t)|^2} \geq 1, \quad \forall t \in (0, l].
+  \frac{|J(t)|^2}{|\tilde{J}(t)|^2} \geq 1, \quad \forall t \in (0, a].
   $$
   By \underline{\hyperlink{GSpre}{previous analysis}}, we have 
   $$
-  \lim _{t \rightarrow 0} \frac{|J(t)|^2}{|\tilde{J}(t)|^2}=1, \quad \text{and} \quad |\tilde{J}|, |J| > 0 \text{ on } (0, l].
+  \lim _{t \rightarrow 0} \frac{|J(t)|^2}{|\tilde{J}(t)|^2}=1, \quad \text{and} \quad |\tilde{J}|, |J| > 0 \text{ on } (0, a].
   $$
   Therefore, we only need to prove:
   \begin{equation}
-    \frac{\left\langle J^{\prime}, J\right\rangle}{\langle J, J\rangle} \geq \frac{\left\langle\tilde{J}^{\prime}, \tilde{J}\right\rangle}{\langle\tilde{J}, \tilde{J}\rangle}, \quad t \in (0, r],
+    \frac{\left\langle J^{\prime}, J\right\rangle}{\langle J, J\rangle} \geq \frac{\left\langle\tilde{J}^{\prime}, \tilde{J}\right\rangle}{\langle\tilde{J}, \tilde{J}\rangle}, \quad t \in (0, r),
   \end{equation}
-  where $r \in (0, l]$, ensuring that the Jacobi field $J$ has no zeros on $(0, r)$.
+  where $r \in (0, a]$, ensuring that the Jacobi field $J$ has no zeros on $(0, r)$.
   
   For any fixed $t_1 \in (0, r)$, since $J(t_1) \neq 0$, we can define
   $$
@@ -614,7 +604,7 @@ We are now in the position to prove \underline{\hyperref[RCT]{Rauch Comparison T
   \begin{equation}
     \left.\left\langle W_{t_1}^{\prime}(t), W_{t_1}(t)\right\rangle\right|_{t=t_1} \geq \left.\left\langle\tilde{W}_{t_1}^{\prime}(t), \tilde{W}_{t_1}(t)\right\rangle\right|_{t=t_1}.
   \end{equation}
-  Because $W_{t_1}$ and $\tilde{W}_{t_1}$ are Jacobi fields on $\gamma$ and $\tilde{\gamma}$, respectively, both of which are zero at $t = 0$, we can write them as:
+  Because $W_{t_1}$ and $\tilde{W}_{t_1}$ are Jacobi fields on $\gamma$ and $\tilde{\gamma}$, respectively, and both of which are zero at $t = 0$, we can write them as:
   $$
   \begin{aligned}
   & \left.\left\langle W_{t_1}^{\prime}(t), W_{t_1}(t)\right\rangle\right|_{t=t_1}=I_0^{t_1}\left(W_{t_1}, W_{t_1}\right), \\
@@ -636,7 +626,7 @@ We are now in the position to prove \underline{\hyperref[RCT]{Rauch Comparison T
   we can use the Basic Index Lemma to compare $\tilde{I}_0^{t_1}(U, U)$ and $\tilde{I}_0^{t_1}\left(\tilde{W}_{t_1}, \tilde{W}_{t_1}\right)$. 
   Additionally, based on the assumptions about the sectional curvatures of $M$ and $\tilde{M}$, we can compare $\tilde{I}_0^{t_1}(U, U)$ and $I_0^{t_1}\left(W_{t_1}, W_{t_1}\right)$.
 
-  Along $\gamma$ and $\tilde{\gamma}$, respectively, we take parallel unit orthogonal frames $\left\{e_i(t)\right\}$ and $\left\{\tilde{e}_i(t)\right\}$ such that:
+  Let $\left\{e_i(t)\right\}$ and $\left\{\tilde{e}_i(t)\right\}$ be unit orthogonal frames paralleling along $\gamma$ and $\tilde{\gamma}$, respectively, such that:
   $$
   \begin{array}{ll}
   e_1(t)=\gamma^{\prime}(t), & e_2\left(t_1\right)=W_{t_1}\left(t_1\right), \\
@@ -647,7 +637,7 @@ We are now in the position to prove \underline{\hyperref[RCT]{Rauch Comparison T
   $$
   W_{t_1}(t)=\sum_{i=2}^m W^i(t) e_i(t),
   $$
-  where $W^i(t)$ satisfies the conditions:
+  where $W^i(t)$ satisfies:
   $$
   \begin{aligned}
   & W^2(0)=\cdots=W^m(0)=0, \\
@@ -688,17 +678,13 @@ We are now in the position to prove \underline{\hyperref[RCT]{Rauch Comparison T
   $$
   I_0^{t_1}\left(W_{t_1}, W_{t_1}\right) \geq \tilde{I}_0^{t_1}\left(\tilde{W}_{t_1}, \tilde{W}_{t_1}\right),
   $$
-  which is the inequality (5) we wanted to prove. Therefore, we have shown that for any $t \in (0, r)$:
+  which is equivalent to the inequality (5). Therefore, we have shown that for any $t \in (0, r)$
   $$
-  \frac{\left\langle J^{\prime}(t), J(t)\right\rangle}{\langle J(t), J(t)\rangle} \geq \frac{\left\langle\tilde{J}^{\prime}(t), \tilde{J}(t)\right\rangle}{\langle\tilde{J}(t), \tilde{J}(t)\rangle},
-  $$
-  or equivalently:
-  $$
-  \frac{|J(t)|^2}{|\tilde{J}(t)|^2} \geq 1 \text {, or equivalently, }|J(t)|^2 \geq|\tilde{J}(t)|^2 \text {. }
+  \frac{\left\langle J^{\prime}(t), J(t)\right\rangle}{\langle J(t), J(t)\rangle} \geq \frac{\left\langle\tilde{J}^{\prime}(t), \tilde{J}(t)\right\rangle}{\langle\tilde{J}(t), \tilde{J}(t)\rangle}.
   $$
 \end{proof}
 \begin{remark}
-  Rauch Comparison Theorem still holds when $J(0),\tilde{J}(0)\neq 0$ or moreover, $J$ and $\tilde{J}$ are not normal Jacobi fields. 
+  Rauch Comparison Theorem also holds when $J(0),\tilde{J}(0)\neq 0$ or moreover, $J$ and $\tilde{J}$ are not normal Jacobi fields. 
   In that case, $J$ and $\tilde{J}$ should satisfy: 
   $$
   \begin{aligned}
