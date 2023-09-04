@@ -56,7 +56,7 @@
 \newcommand{\linktoprf}[1]{\hyperlink{#1}{To complete proof.}}
 \newcommand{\targetprf}[1]{\hypertarget{#1}{Proof of \autoref{#1}}}
 
-\title{Note 6: Comparison Theorems in Riemannian Geometry}
+\title{Note 7: Comparison Theorems in Riemannian Geometry}
 \date{} % 显示日期
 
 \renewcommand\refname{Reference}
@@ -74,7 +74,8 @@ any two geodesics originating from the same point will intersect at the antipoda
 To study this "divergence" or "convergence" on a Riemannian manifold, the usual approach is to embed the geodesics into a family of geodesics, 
 by considering a "variation of geodesics" with a fixed starting point, and analyzing the corresponding variation vector field which is known as a Jacobi field. 
 
-We now determine the differential equation satisfied by $V \left|_{\alpha(t, 0)}\right.$. By the induced covariant derivatives (see \cite{ChenWeiHuan2002}, pp.149-150, Example 8.2), we have
+For any given geodesic variation $\alpha$, we now determine the differential equation satisfied by $V \left|_{\alpha(t, 0)}\right.$. 
+By the induced covariant derivatives (see \cite{ChenWeiHuan2002}, pp.149-150, Example 8.2), we have
 $$
 \nabla_T V-\nabla_V T-\alpha_*\left(\left[\frac{\partial}{\partial t}, \frac{\partial}{\partial s}\right]\right)=0 .
 $$
@@ -94,6 +95,7 @@ we get the Jacobi equation $\nabla_T \nabla_T V=R(T, V) T.$
   $$
   is called a Jacobi field. 
 \end{definition}
+
 Let $\left\{E_i(t)\right\}$ be orthogonal and parallel along $\alpha(t, 0)$. Then the Jacobi equation may be written as the linear second-order system of ordinary differential equations
 $$
 \left[\begin{array}{c}
@@ -140,11 +142,11 @@ Finally, if $J$ is a Jacobi field, then $J$ comes from a variation of geodesics.
 \end{proposition}
 \begin{proof}[Proof]
   Choose a curve $\lambda(s), s \in(-\varepsilon, \varepsilon)$ in $M$ such that $\lambda(0)=$ $\gamma(0), \lambda^{\prime}(0)=J(0)$. 
-  Along $\lambda$ choose a vector field $W(s)$ with $W(0)=\gamma^{\prime}(0), \nabla_{\frac{\partial}{\partial s}}W(0)=J'(0)$. 
+  Using parallel transport, along $\lambda$ choose a vector field $W(s)$ with $W(0)=\gamma^{\prime}(0), \nabla_{\frac{\partial}{\partial s}}W(0)=J'(0)$. 
   Define $\alpha(s, t)=\exp _{\lambda(s)} t W(s)$ and verify that $V(0,0)=\lambda^{\prime}(0)=J(0)$ and
   $$
   \nabla_{\frac{\partial}{\partial t}} V(0,0)=\nabla_{\frac{\partial}{\partial s}} T(0,0)=\nabla_{\frac{\partial}{\partial s}}W(0)=J'(0).
-  $$ 
+  $$
 \end{proof}
 
 % \begin{proposition}
@@ -169,7 +171,7 @@ Finally, if $J$ is a Jacobi field, then $J$ comes from a variation of geodesics.
 \begin{corollary}
   Let $\gamma:[0, a] \rightarrow M$ be a geodesic. Then a Jacobi field $J$ along $\gamma$ with $J(0)=0$ is given by
   $$
-  J(t)=\exp_{t \gamma^{\prime}(0)} \left(t J^{\prime}(0)\right), \quad t \in[0, a] .
+  J(t)=\left(\exp_{\gamma(0)}\right)_{*\left(t \gamma^{\prime}(0)\right)} \left(t J^{\prime}(0)\right), \quad t \in[0, a] .
   $$
 \end{corollary}
 
@@ -304,7 +306,7 @@ The following proposition relates conjugate points with the singularities of the
 
 \subsection*{Rauch Comparison Theorem}
 
-With enough preparations, we state Rauch comparison theorem and will show some examples of application. Then we will give a brief proof as $n=2$ given that the motivation of the proof 
+With enough preparations, we now state Rauch comparison theorem. Then we will give a brief proof as $n=2$ given that the motivation of the proof 
 in this case is most clear. For general situations, we need introduce Morse index forms to complete the proof which will be discussed in the sequel subsection. 
 
 Let $M$ and $\widetilde{M}$ be two $n$-dimensional Riemannian manifolds with $p\in M$ and $\widetilde{p}\in \widetilde{M}$. 
@@ -323,28 +325,22 @@ let $\widetilde{X}=\varphi_*(X)\equiv \varphi(X)$, where $\widetilde{X}\in T_{\w
   $$
   Then 
   $$
-  |(\exp_{\widetilde{p}})_*\widetilde{X}|\leq |(\exp_{p})_* X|.
+  |(\exp_{\widetilde{p}})_{*(t\tilde{x})}\widetilde{X}|\leq |(\exp_{p})_{*(tx)} X|.
   $$
 \end{theorem}
 
-If $M$ is a complete Riemannian manifold with non-positive sectional curvature, $\exp_p$ is defined on all of $T_pM$ by Hopf-Rinow Theorem. 
-Then for any $p \in M$, $\exp_{p}: T_pM \rightarrow M$ is a distance-expanding map, i.e.
+If any plane containing $\gamma'(t)$ has a non-positive sectional curvature, then $\exp_{p}: T_pM \rightarrow M$ is a distance-expanding map, i.e.
 $$
-\left|(\exp_{p})_* X\right| \geq |X|, \quad \forall X \in T_pM
+\left|(\exp_{p})_{*(tx)} X\right| \geq |X|, \quad \forall X \in T_pM.
 $$
-Furthermore, there is an interesting corollary (a special case of Toponogov Comparison Theorem) as follows:
-\begin{corollary}
-  Let $M$ be a simply connected complete Riemannian manifold with non-positive sectional curvature, and let $ABC$ be a geodesic triangle in $M$ 
-  (i.e. all sides of the triangle are minimal geodesics), with corresponding angles $A, B, C$, and corresponding side $a, a, c$, then 
+Also, if any plane containing $\gamma'(t)$ has a non-negative sectional curvature and $\gamma$ has no conjugate point to $p$, 
+then $\exp_{p}: T_pM \rightarrow M$ is a distance-reducing map, i.e.
+$$
+\left|(\exp_{p})_{*(tx)} X\right| \leq |X|, \quad \forall X \in T_pM.
+$$
 
-  (1) $a^2+b^2-2 a b \cos C \leqslant c^2$, 
-
-  (2) $A+B+C \leqslant \pi$. 
-\end{corollary}
-The proof of above corollary together with some explanation of how Rauch Comparison Theorem applies to sphere theorem can be found in \cite{WuHongXi2014}, Chapter 8. 
-
-Since $(\exp_{p})_*$ is always isometric in the radial direction, without loss of generality, we can assume that $X \perp x, \widetilde{X} \perp \widetilde{x}$ 
-in $T_pM, T_{\widetilde{p}}\widetilde{M}$, respectively, and describe $(\exp_{p})_* X$ via Jacobi fields. 
+Since $(\exp_{p})_{*(tx)}$ is always isometric along the direction of $x$, without loss of generality, we can assume that $X \perp x, \widetilde{X} \perp \widetilde{x}$ 
+in $T_pM, T_{\widetilde{p}}\widetilde{M}$, respectively, and describe $(\exp_{p})_{*(tx)} X$ via Jacobi fields. 
 % Let $\gamma_u(t) = \exp_{p} t(\widetilde{x}+uX)$ define the variation $\{\gamma_u\}$ (one-parameter family of geodesics), and let $\widetilde{J}(t)$ be 
 % the restriction of the transverse vector field of $\{\gamma_u\}$ on $\gamma$. Then $\widetilde{J}$ is the Jacobi field along $\gamma$, 
 % with $\widetilde{J}(0) = 0, \dot{\widetilde{J}}(0) = X, \widetilde{J}(1) = (\exp_{p})_* X$. Similarly, using $\widetilde{\gamma}_u(t) = \exp_{p} t(x+u\widetilde{X})$, 
@@ -477,6 +473,7 @@ However, to verify this inequality, one needs the minimal property of Jacobi fie
 \subsection*{Morse index form and proof of Rauch comparison theorem}
 
 To see how the Morse index form is motivated, we shall introduce "path space" and one can see more details in \cite{Milnor1973}, Part \uppercase\expandafter{\romannumeral3}. 
+And for simplicity, we replace "the energy of a path" in \cite{Milnor1973} by the length of a path, which is more convenient to understand.
 
 The set of all piecewise smooth paths from $p$ to $q$ in $M$ will be denoted by $\Omega(M ; p, q)$, or briefly by $\Omega(M)$ or $\Omega$.
 We will think of $\Omega$ as being something like an "infinite dimensional manifold", for example, a topological space in which each point has a neighborhood 

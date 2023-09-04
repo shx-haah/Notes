@@ -1,0 +1,184 @@
+%!TEX program = Xelatex
+\documentclass{ctexart}
+
+\usepackage{amsmath, amssymb, amsthm, titlesec}
+\usepackage[skins, breakable, theorems]{tcolorbox}
+\usepackage{xparse, ocgx2, hyperref, endnotes}
+\usepackage[top=2.54cm, bottom=2.54cm, left=3.18cm, right=3.18cm]{geometry}
+
+\def\Id{\,\mathrm{d}} % 积分中的正体d
+\newcommand{\norm}[1]{\left|#1\right|} % 范数
+
+% [number within=section/...]{}{<display name>}{<style>}{<label>(cite as "Thm:...")}
+\newtcbtheorem[]{tcbdefinition}{Definition}{fonttitle = \bfseries}{Def}
+\newtcbtheorem[]{tcbtheorem}{Theorem}{fonttitle = \bfseries}{Thm}
+\newtcbtheorem[]{tcbproposition}{Proposition}{fonttitle = \bfseries}{Pro}
+\newtcbtheorem[]{tcblemma}{Lemma}{fonttitle = \bfseries}{Lem}
+\newtcbtheorem[]{tcbcorollary}{Corollary}{fonttitle = \bfseries}{Cor}
+\NewDocumentEnvironment{definition}{ O{} O{} } % two optional arguments
+  {\tcbdefinition{#1}{#2}}
+  {\endtcbdefinition}
+\NewDocumentEnvironment{theorem}{ O{} O{} }
+  {\tcbtheorem{#1}{#2}}
+  {\endtcbtheorem}
+\NewDocumentEnvironment{proposition}{ O{} O{} }
+  {\tcbproposition{#1}{#2}}
+  {\endtcbproposition}
+\NewDocumentEnvironment{lemma}{ O{} O{} }
+  {\tcblemma{#1}{#2}}
+  {\endtcblemma}
+\NewDocumentEnvironment{corollary}{ O{} O{} }
+  {\tcbcorollary{#1}{#2}}
+  {\endtcbcorollary}
+\makeatletter
+\newcommand\tcb@cnt@tcbdefinitionautorefname{Definition}
+\newcommand\tcb@cnt@tcbtheoremautorefname{Theorem}
+\newcommand\tcb@cnt@tcbpropositionautorefname{Proposition}
+\newcommand\tcb@cnt@tcblemmaautorefname{Lemma}
+\newcommand\tcb@cnt@tcbcorollaryautorefname{Corollary} 
+\makeatother
+
+% Sketch of proof & Remark
+\newtcolorbox{sop}{
+    blanker, breakable, left = 5mm,
+    before skip = 10pt, after skip = 10pt,
+    borderline west = {1mm}{0pt}{red},
+    coltitle = black, title = \emph{Sketch of Proof}
+}
+\newtcolorbox{remark}{
+    colback = white, fonttitle = \bfseries,
+    colbacktitle = white, coltitle = black, enhanced,
+    boxed title style = {sharp corners},
+    attach boxed title to top left={yshift = -2mm, xshift = 5mm},
+    title = Remark
+}
+
+\newcommand{\linktoprf}[1]{\hyperlink{#1}{To complete proof.}}
+\newcommand{\targetprf}[1]{\hypertarget{#1}{Proof of \autoref{#1}}}
+
+\title{Note 8: Comparison Theorems in Riemannian Geometry and Applications}
+\date{} % 显示日期
+
+\renewcommand\refname{Reference}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\maketitle
+
+In this Note, we first introduce some applications of Rauch Comparison Theorem. Then we will give another two Comparison Theorems, Hessian Comparison Theorem and Toponogov Comparison Theorem, 
+and also some applications of these two theorems. 
+
+
+\subsection*{Applications of Rauch Comparison Theorem}
+
+Recall the Rauch Comparison Theorem in Note 7. By Hopf-Rinow Theorem, if $M$ is a complete Riemannian manifold with non-positive sectional curvature, $\exp_p$ is defined on the whole $T_pM$. 
+Then for any $p \in M$, $\exp_{p}: T_pM \rightarrow M$ is a distance-expanding map. 
+Furthermore, there is an interesting corollary, which can be found in \cite{WuHongXi2014}, Corollary 3, p.119.
+\begin{corollary}
+    Let $M$ be a simply connected complete Riemannian manifold with non-positive sectional curvature, and let $ABC$ be a geodesic triangle in $M$ 
+    (i.e. all sides of the triangle are minimal geodesics), with corresponding angles $A, B, C$, and corresponding side $a, a, c$, then 
+
+    (1) $a^2+b^2-2 a b \cos C \leq c^2$, 
+
+    (2) $A+B+C \leq \pi$. 
+\end{corollary}
+\begin{proof}[Proof]
+    Let $x$ be the vertex of angle $C$, and refer to Figure 8.2 in the tangent space $T_x M$. Draw radial line segments $\overline{O p}$ and $\overline{O q}$ with lengths $a$ and $b$, respectively, 
+    such that $\exp_x$ maps $\overline{O p}$ and $\overline{O q}$ to the sides of the geodesic triangle with lengths $a$ and $b$. Let $\zeta$ be the $\exp_x^{-1}$ image of side $c$. 
+    Since $\exp_x$ is a distance-expanding map, we have $L(\zeta) \leq c$, so the length of the line segment $\overline{p q}$ in $T_x M$ is $L(\overline{p q}) \leq L(\zeta) \leq c$.
+    The law of cosines for the triangle $O p q$ in $T_x M$ is given by:
+    $$
+    a^2 + b^2 - 2ab\cos C = L(\overline{p q})^2,
+    $$
+    which proves (1).
+    In $\mathbb{R}^2$, construct a triangle with boundary lengths $a$, $b$, and $c$. This is possible because the sides of a geodesic triangle are always the shortest geodesic paths, 
+    and the sum of the lengths of any two sides must be greater than the length of the third side. Let $A', B', C'$ denote the angles of this triangle in $\mathbb{R}^2$.
+    From (1), we know that $C \leq C'$. Similarly, we can deduce $A \leq A'$ and $B \leq B'$. Thus, (2) is proven.
+\end{proof}
+This corollary is a special case of Toponogov Comparison Theorem. The proof of the Toponogov theorem essentially relies on the Rauch comparison theorem,
+and the method is similar to the proof of this corollary. However, it typically involves conjugate points, making the situation more complex.
+
+\begin{theorem}
+  Let $M$ and $\tilde{M}$ be $m$-dimensional Riemannian manifolds, and let $K$ and $\tilde{K}$ be the sectional curvatures, respectively. Consider a point $p$ in $M$ and $\tilde{p}$ in $\tilde{M}$. 
+  Let $\varphi: T_p M \rightarrow T_{\tilde{p}} \tilde{M}$ be an isometric linear isomorphism. Assume that $W$ and $\tilde{W}=\varphi(W)$ are neighborhoods of the origin in $T_p M$ and $T_{\tilde{p}} \tilde{M}$, 
+  respectively, such that the exponential mappings
+  $$
+  \exp_p: W \rightarrow \exp_p(W) \subset M \quad \text{ and } \quad \exp_{\tilde{p}}: \tilde{W} \rightarrow \exp_{\tilde{p}}(\tilde{W}) \subset \tilde{M}
+  $$
+  are both diffeomorphisms. If for any corresponding points
+  $$
+  q \in \exp_p(W) \quad \text{ and } \quad \tilde{q}=\exp_{\tilde{p}} \circ \varphi \circ (\exp_q)^{-1}(q) \in \exp_{\tilde{p}}(\tilde{W}),
+  $$
+  and for any two-dimensional sections $\sigma \subset T_q M$ and $\tilde{\sigma} \subset T_{\tilde{q}} \tilde{M}$, the following inequality holds:
+  $$
+  K(\sigma) \geq \tilde{K}(\tilde{\sigma}),
+  $$
+  then, for any smooth curve $\beta(u)$ in $W$ with $0 \leq u \leq 1$, the following inequality holds:
+  $$
+  L(\exp_p \circ \beta) \leq L(\exp_{\tilde{p}} \circ (\varphi \circ \beta)).
+  $$
+\end{theorem}
+\begin{proof}[Proof]
+  Without loss of generality, we can assume that $\beta$ is nonzero everywhere (i.e., $\beta$ does not pass through the origin).
+  Consider the geodesic variation:
+  $$
+  \alpha(t, u) = \exp_p(t \beta(u)), \quad 0 \leq t \leq 1, \quad 0 \leq u \leq 1.
+  $$
+  Let
+  $$
+  V(t, u) = \alpha_{*(t, u)}\left(\frac{\partial}{\partial u}\right) = \left(\exp_p\right)_{* t \beta(u)}\left(t \beta^{\prime}(u)\right).
+  $$
+  Then:
+  $$
+  \begin{aligned}
+  V(1, u)  &= \left(\exp_p\right)_{* \beta(u)}\left(\beta^{\prime}(u)\right), \\
+  L\left(\exp_p \circ \beta\right) &= \int_0^1|V(1, u)| \mathrm{d} u.
+  \end{aligned}
+  $$
+  Similarly, we have:
+  $$
+  L\left(\exp_{\tilde{p}} \circ \varphi \circ \beta\right) = \int_0^1|\tilde{V}(1, u)| \mathrm{d} u,
+  $$
+  where:
+  $$
+  \tilde{V}(1, u) = \frac{\mathrm{d}}{\mathrm{d} u}\left(\exp_{\tilde{p}}(\varphi \circ \beta(u))\right) = \left(\exp_{\tilde{p}}\right)_{* \varphi \circ \beta(u)}\left(\varphi\left(\beta^{\prime}(u)\right)\right).
+  $$
+
+  For any fixed $u \in (0,1)$, consider the vector fields $V(t, u)$ and $\tilde{V}(t, u)$ along the geodesics $\gamma_u$ and $\tilde{\gamma}_u$, respectively, where
+  $$
+  \gamma_u(t) = \exp_p(t \beta(u)) \quad \text{ and } \quad \tilde{\gamma}_u(t) = \exp_{\tilde{p}}(t \varphi \circ \beta(u)). 
+  $$
+  According to the process of defining Jacobi fields, $V(t, u)$ and $\tilde{V}(t, u)$ are Jacobi fields along $\gamma_u$ and $\tilde{\gamma}_u$, respectively. By definition:
+  $$
+  \begin{aligned}
+  & V(0, u) = \tilde{V}(0, u) = 0, \\
+  & \frac{\mathrm{D} V}{\mathrm{d} t}(0, u) = \beta^{\prime}(u), \quad \frac{\mathrm{D} \tilde{V}}{\mathrm{d} t}(0, u) = \varphi\left(\beta^{\prime}(u)\right), \\
+  & \gamma_u^{\prime}(0) = \beta(u), \quad \tilde{\gamma}_u^{\prime}(0) = \varphi(\beta(u)).
+  \end{aligned}
+  $$
+  Based on the assumption that, for any $X \in T_{\gamma_u(t)} M$ and $\tilde{X} \in T_{\tilde{\gamma}_u(t)} \tilde{M}$:
+  $$
+  K\left(\gamma_u^{\prime}, X\right) \geq \tilde{K}\left(\tilde{\gamma}_u^{\prime}, \tilde{X}\right),
+  $$
+  we can apply Rauch Comparison Theorem, which implies:
+  $$
+  |V(t, u)| \leq |\tilde{V}(t, u)|.
+  $$
+  In particular:
+  $$
+  |V(1, u)| \leq |\tilde{V}(1, u)|,
+  $$
+  and thus:
+  $$
+  L\left(\exp_p \circ \beta\right) \leq L\left(\exp_{\tilde{p}} \circ \varphi \circ \beta\right).
+  $$
+\end{proof}
+
+
+
+
+\bibliographystyle{unsrt}
+\bibliography{NoteRef}
+
+\end{document}
