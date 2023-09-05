@@ -96,7 +96,7 @@ Furthermore, there is an interesting corollary, which can be found in \cite{WuHo
     and the sum of the lengths of any two sides must be greater than the length of the third side. Let $A', B', C'$ denote the angles of this triangle in $\mathbb{R}^2$.
     From (1), we know that $C \leq C'$. Similarly, we can deduce $A \leq A'$ and $B \leq B'$. Thus, (2) is proven.
 \end{proof}
-This corollary is a special case of Toponogov Comparison Theorem. The proof of the Toponogov theorem essentially relies on the Rauch comparison theorem,
+This corollary is a special case of Toponogov Comparison Theorem. The proof of the Toponogov theorem essentially relies on the Rauch Comparison theorem,
 and the method is similar to the proof of this corollary. However, it typically involves conjugate points, making the situation more complex.
 
 \begin{theorem}
@@ -174,6 +174,99 @@ and the method is similar to the proof of this corollary. However, it typically 
   L\left(\exp_p \circ \beta\right) \leq L\left(\exp_{\tilde{p}} \circ \varphi \circ \beta\right).
   $$
 \end{proof}
+This corollary plays an essential role in the proof of the following Toponogov's Theorem and that is how the theorem relies on the Rauch Comparison theorem. 
+
+\subsection*{Hessian Comparison Theorem}
+We will introduce a naturally defined distance function on the manifold as well as Gauss's Lemma expressed using the distance function.
+
+To avoid introducing the concepts of cut points and cut locus, we introduce another specialized definition: a geodesic is called "stably shortest" if all geodesics nearby it are also shortest. Specifically, let
+$$
+\begin{aligned}
+  \widetilde{\gamma}:[0, b] &\rightarrow T_{\gamma(0)} M \\
+  t &\mapsto t \dot{\gamma}(0)
+\end{aligned}
+$$
+be a radial line segment with $\gamma(0)=x$. We call $\gamma=\exp _x \widetilde{\gamma}$ "stably shortest" if there exists a sector neighborhood $\mathcal{U}$ of $\widetilde{\gamma}$ in $M_x$ such that:
+$$
+\mathcal{U}=\{t p\mid t \in[0, b],|p-\dot{\gamma}(0)|<\text { some constant }\}.
+$$
+All radial line segments in $\mathcal{U}$ are mapped to the shortest geodesics in $M$ starting from $x$ by $\exp _x$. 
+From the continuity of the cut locus (see \cite{WuHongXi2014}, p.158, Lemma 5), one can show that 
+$\gamma$ is stably shortest if and only if it does not contain any cut points along $\gamma$ away from $\gamma(0)$.
+
+For any given point $x \in M$, we can define a distance function $\rho: M \rightarrow \mathbb{R}$ as follows: 
+for any $y \in M$, $\rho(y)$ is defined as the distance between $x$ and $y$, denoted as $d(x, y)$. It is evident that the function $\rho$ is continuous, but it may not necessarily be differentiable.
+If $\gamma:[0, b] \rightarrow M$ is a normal (with $|\gamma'|\equiv 1$) stably shortest geodesic, then it has a neighborhood $\exp _x \mathcal{U}$ (as described above) such that 
+$\exp _x: \mathcal{U} \rightarrow \exp _x \mathcal{U}$ is a diffeomorphism, and
+$$
+\rho\left(\exp _x z\right)=|z|, \quad \forall z \in \mathcal{U} .
+$$
+Thus, $\rho$ is smooth on $\exp _x \mathcal{U}-\{x\}$. Now, we define a vector field $\frac{\partial}{\partial \rho}$ on $\exp _x \mathcal{U}-\{x\}$ as follows:
+For any $\exp _x z \in \exp _x \mathcal{U}-\{x\}$, we have
+$$
+\frac{z}{|z|} \in T_x M \equiv T_z\left(T_x M\right),
+$$
+so let
+$$
+\left.\frac{\partial}{\partial \rho}\right|_{\exp _x z}=\mathrm{d} \exp _x\left(\frac{z}{|z|}\right).
+$$
+It is clear from the definition of $\frac{\partial}{\partial \rho}$ that:
+\begin{equation}
+  \left\{
+  \begin{array}{l}
+    \frac{\partial}{\partial \rho} \cdot \rho=1, \\
+    \left\langle\frac{\partial}{\partial \rho}, \frac{\partial}{\partial \rho}\right\rangle=1 .
+  \end{array}
+  \right.  
+\end{equation}
+
+Using $\rho$ and $\frac{\partial}{\partial \rho}$, we can restate Gauss's Lemma as follows:
+\begin{lemma}
+  For any tangent vector $X$ in $\exp _x \mathcal{U}-\{x\}$, we have:
+  $$
+  X \cdot \rho=\left\langle X, \frac{\partial}{\partial \rho}\right\rangle.
+  $$  
+\end{lemma}
+\begin{proof}[Proof]
+  When $X=\frac{\partial}{\partial \rho}$, it is evident from equation (1) that the lemma holds. If
+  $$
+  \left\langle X, \frac{\partial}{\partial \rho}\right\rangle=0,
+  $$
+  then by Gauss's Lemma in Note 6, we know that $X$ is tangent to a geodesic sphere. Note that the geodesic sphere is an iso-distance surface of $\rho$, so $X \cdot \rho=0$. This proves the lemma.  
+\end{proof}
+
+\subsection*{Toponogov's Theorem and its Applications}
+
+In this section we state Toponogov's Theorem$^{\cite{Cheeger2008}}$, which is a powerful global generalization of the Rauch Theorem. There will be two equivalent statements, and it will be convenient to prove them simultaneously.
+All indices below are to be taken modulo 3. 
+\begin{definition}
+  A geodesic triangle in the Riemannian manifold $\mathrm{M}$ is a set of three geodesic segments parameterized by arc length $\left(\gamma_1, \gamma_2, \gamma_3\right)$ of lengths $l_1, l_2, l_3$ such that $\gamma_i\left(l_i\right)=\gamma_{i+1}(0)$ and $l_i+l_{i+1} \geq l_{i+2}$. Set
+  $$
+  \alpha_i=\angle\left(-\gamma_{i+1}^{\prime}\left(l_{i+1}\right), \gamma_{i+2}^{\prime}(0)\right),
+  $$
+  the angle between $-\gamma_{i+1}^{\prime}\left(l_{i+1}\right)$ and $\gamma_{i+2}^{\prime}(0), 0 \leq \alpha_i \leq \pi$.  
+\end{definition}
+We shall specify a geodesic triangle by giving its sides $\left(\gamma_1, \gamma_2, \gamma_3\right)$.
+\begin{theorem}
+  Let $M$ be a complete manifold with $K_M \geq$ $H$.
+
+  (A) Let $\left(\gamma_1, \gamma_2, \gamma_3\right)$ determine a geodesic triangle in M. Suppose $\gamma_1, \gamma_3$ are minimal and if $H>0$, suppose $L\left[\gamma_2\right] \leq \frac{\pi}{\sqrt{H}}$. 
+  Then in $M^H$, the simply connected 2-dimensional space of constant curvature $H$, there exists a geodesic triangle $\left(\bar{\gamma}_1, \bar{\gamma}_2, \bar{\gamma}_3\right)$ 
+  such that $L\left[\gamma_i\right]=L\left[\bar{\gamma}_i\right]$ and $\bar{\alpha}_1 \leq \alpha_1, \bar{\alpha}_3 \leq \alpha_3$. 
+  Except in case $H>0$ and $L\left[\gamma_i\right]=\frac{\pi}{\sqrt{H}}$ for some $i$, the triangle in $M^H$ is uniquely determined.
+
+  (B) Let $\gamma_1, \gamma_2$ be geodesic segments in $M$ such that $\gamma_1\left(l_1\right)=\gamma_2(0)$ and $\angle\left(-\gamma_1^{\prime}\left(l_1\right), \gamma_2^{\prime}(0)\right)=\alpha$. 
+  We call such a configuration a hinge $l$ and denote it by $\left(\gamma_1, \gamma_2, \alpha\right)$. Let $\gamma_1$ be minimal, and if $H>0$,
+  $$
+  L\left[\gamma_2\right] \leq \frac{\pi}{\sqrt{H}}
+  $$
+  Let $\bar{\gamma}_1, \bar{\gamma}_2 \subset M^H$ be such that $\gamma_1\left(l_1\right)=\gamma_2(0), L\left[\gamma_i\right]=L\left[\bar{\gamma}_i\right]=l_i$ and 
+  $\angle\left(-\bar{\gamma}_1^{\prime}\left(l_1\right), \bar{\gamma}_2^{\prime}(0)\right)=\alpha$. Then
+  $$
+  \rho\left(\gamma_1(0), \gamma_2\left(l_2\right)\right) \leq \rho\left(\bar{\gamma}_1(0), \bar{\gamma}_2\left(l_2\right)\right)
+  $$  
+\end{theorem}
+For the proof is too long but the necessary tools to prove this theorem are all given by us so far, we shall not present the proof here. 
 
 
 
