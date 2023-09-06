@@ -235,6 +235,30 @@ Using $\rho$ and $\frac{\partial}{\partial \rho}$, we can restate Gauss's Lemma 
   then by Gauss's Lemma in Note 6, we know that $X$ is tangent to a geodesic sphere. Note that the geodesic sphere is an iso-distance surface of $\rho$, so $X \cdot \rho=0$. This proves the lemma.  
 \end{proof}
 
+Given $f\in C^2(M)$, the second-order covariant derivative of $f$, i.e. $\nabla^2 f = \nabla df$, is called the Hessian of $f$, denoted by $\text{Hes}(f)$. 
+By definition, for any smooth vector fields $X, Y$ on $M$, we have:
+$$
+\begin{aligned}
+\text{Hes}(f)(X, Y) &= \nabla df(X, Y) \\
+&= Y(Xf) - (\nabla_X Y)f.
+\end{aligned}
+$$
+As $\text{Hes}(f)$ is a $(0,2)$-order symmetric tensor field, 
+it induces a symmetric bilinear functional on $T_p(M)$ for each point $p$ in $M$.
+% Laplacian of $f$: 
+% From equation (3.4.26), the Laplacian of $f$, denoted as $\Delta f$, is equal to the trace of $\text{Hes}(f)$, i.e.,
+% $$
+% \Delta f = \text{tr}(\text{Hes}(f)) = \text{tr}(\nabla^2 f).
+% $$
+If we choose a local coordinate system $(x^i)$ around a point $p \in M$, then by Proposition 3 in Note 6, we have:
+$$
+\begin{aligned}
+\text{Hes}(f)\left(\frac{\partial}{\partial x^i}(p), \frac{\partial}{\partial x^j}(p)\right) &= \frac{\partial^2 f}{\partial x^i \partial x^j}(p), \\
+% \Delta f(p) &= \sum_i \frac{\partial^2 f}{\left(\partial x^i\right)^2}(p).
+\end{aligned}
+$$
+From this, we can see that the value of $\text{Hes}(f)(X, Y)$ at point $p$ depends only on the values of the vectors $X$ and $Y$ at point $p$ and is independent of their behavior near $p$.
+
 \subsection*{Toponogov's Theorem and its Applications}
 
 In this section we state Toponogov's Theorem$^{\cite{Cheeger2008}}$, which is a powerful global generalization of the Rauch Theorem. There will be two equivalent statements, and it will be convenient to prove them simultaneously.
