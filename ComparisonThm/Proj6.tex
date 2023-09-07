@@ -203,8 +203,17 @@ there may be no global frame on $M$.
     \quad\left\langle\exp_{*v}(v),\exp_{*v}(w)\right\rangle=\langle v, w\rangle.
     $$
 \end{lemma}
-From the Gauss Lemma, the boundary of a normal ball is a hypersurface (submanifold of codimension $1$) in $M$ 
-orthogonal to the geodesics that start from $p$ and is called the geodesic sphere at $p$. Besides, $\exp_{*v}$ is isometric along the direction of $v$. 
+From the Gauss Lemma: for a ray $\rho(t)=tv$ defined on $T_p M$, the tangent map of $\exp_p$ maps vectors (in $T_{\rho(t)}(T_p M)$) orthogonal to $\rho(t)$ 
+to tangent vectors (in $T_p M$) orthogonal to the geodesic $\gamma(t) = \exp_p(tv)$.
+In fact, using polar coordinates $r, \theta_1, \ldots, \theta_{n-1}$ (which are defined like normal coordinates above) the Gauss Lemma implies that 
+$\left\langle\frac{\partial}{\partial \theta_i}, \frac{\partial}{\partial r}\right\rangle=0$. Then if
+$$
+x=h \frac{\partial}{\partial r}+\sum g_i \frac{\partial}{\partial \theta_i},
+$$
+we have
+$$
+\left\langle\frac{\partial}{\partial r}, x\right\rangle=h=h \frac{\partial r}{\partial r}+\sum g_i \frac{\partial r}{\partial \theta_i}=x(r) .
+$$
 
 \subsection*{Induced covariant derivatives}
 
