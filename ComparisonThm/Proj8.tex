@@ -153,7 +153,7 @@ and the method is similar to the proof of this corollary. However, it typically 
   $$
   \begin{aligned}
   & V(0, u) = \tilde{V}(0, u) = 0, \\
-  & \frac{\mathrm{D} V}{\mathrm{d} t}(0, u) = \beta^{\prime}(u), \quad \frac{\mathrm{D} \tilde{V}}{\mathrm{d} t}(0, u) = \varphi\left(\beta^{\prime}(u)\right), \\
+  & \frac{\nabla V}{\mathrm{d} t}(0, u) = \beta^{\prime}(u), \quad \frac{\nabla \tilde{V}}{\mathrm{d} t}(0, u) = \varphi\left(\beta^{\prime}(u)\right), \\
   & \gamma_u^{\prime}(0) = \beta(u), \quad \tilde{\gamma}_u^{\prime}(0) = \varphi(\beta(u)).
   \end{aligned}
   $$
@@ -176,19 +176,42 @@ and the method is similar to the proof of this corollary. However, it typically 
 \end{proof}
 This corollary plays an essential role in the proof of the following Toponogov's Theorem and that is how the theorem relies on the Rauch Comparison theorem. 
 
-\subsection*{Hessian Comparison Theorem}
-We will introduce a naturally defined distance function on the manifold as well as Gauss's Lemma expressed using the distance function.
+\subsection*{Hessian Comparison Theorem and its application}
+We will introduce the Hessian and Laplacian on manifolds as well as a naturally defined distance function.
 
-To avoid introducing the concepts of cut points and cut locus, we introduce another specialized definition: a geodesic is called "stably shortest" if all geodesics nearby it are also shortest. Specifically, let
+Given $f\in C^2(M)$, the second-order covariant derivative of $f$, i.e. $\nabla^2 f = \nabla df$, is called the Hessian of $f$. 
+By definition, for any smooth vector fields $X, Y$ on $M$, we have:
 $$
 \begin{aligned}
-  \widetilde{\gamma}:[0, b] &\rightarrow T_{\gamma(0)} M \\
+\nabla^2 f(X, Y) &= \nabla df(X, Y) \\
+&= Y(Xf) - (\nabla_X Y)f.
+\end{aligned}
+$$
+As $\nabla^2 f$ is a $(0,2)$-order symmetric tensor field, 
+it induces a symmetric bilinear functional on $T_p M$ for each point $p$ in $M$.
+The Laplacian of $f$, denoted as $\Delta f$, is equal to the trace of $\nabla^2(f)$, i.e.,
+$$
+\Delta f = \text{tr}(\nabla^2(f)) = \text{tr}(\nabla^2 f).
+$$
+If we choose a local coordinate system $(x^i)$ around a point $p \in M$, then by Proposition 3 in Note 6, we have:
+$$
+\begin{aligned}
+\nabla^2 f\left(\frac{\partial}{\partial x^i}(p), \frac{\partial}{\partial x^j}(p)\right) &= \frac{\partial^2 f}{\partial x^i \partial x^j}(p), \\
+\Delta f(p) &= \sum_i \frac{\partial^2 f}{\left(\partial x^i\right)^2}(p).
+\end{aligned}
+$$
+From this, we can see that the value of $\nabla^2 f(X, Y)$ at point $p$ depends only on the values of the vectors $X$ and $Y$ at point $p$ and is independent of their behavior near $p$.
+
+To avoid discussing the concepts of cut points and cut locus, we introduce another specialized definition: a geodesic is called "stably shortest" if all geodesics nearby it are also shortest. Specifically, let
+$$
+\begin{aligned}
+  \widetilde{\gamma}:[0, a] &\rightarrow T_{\gamma(0)} M \\
   t &\mapsto t \dot{\gamma}(0)
 \end{aligned}
 $$
-be a radial line segment with $\gamma(0)=x$. We call $\gamma=\exp _x \widetilde{\gamma}$ "stably shortest" if there exists a sector neighborhood $\mathcal{U}$ of $\widetilde{\gamma}$ in $M_x$ such that:
+be a radial line segment with $\gamma(0)=x$. We call $\gamma=\exp _x \widetilde{\gamma}$ "stably shortest" if there exists a sector neighborhood $\mathcal{U}$ of $\widetilde{\gamma}$ in $T_x M$ such that:
 $$
-\mathcal{U}=\{t p\mid t \in[0, b],|p-\dot{\gamma}(0)|<\text { some constant }\}.
+\mathcal{U}=\{t p\mid t \in[0, a],|p-\dot{\gamma}(0)|<\text { some constant }\}.
 $$
 All radial line segments in $\mathcal{U}$ are mapped to the shortest geodesics in $M$ starting from $x$ by $\exp _x$. 
 From the continuity of the cut locus (see \cite{WuHongXi2014}, p.158, Lemma 5), one can show that 
@@ -196,70 +219,194 @@ $\gamma$ is stably shortest if and only if it does not contain any cut points al
 
 For any given point $x \in M$, we can define a distance function $\rho: M \rightarrow \mathbb{R}$ as follows: 
 for any $y \in M$, $\rho(y)$ is defined as the distance between $x$ and $y$, denoted as $d(x, y)$. It is evident that the function $\rho$ is continuous, but it may not necessarily be differentiable.
-If $\gamma:[0, b] \rightarrow M$ is a normal (with $|\gamma'|\equiv 1$) stably shortest geodesic, then it has a neighborhood $\exp _x \mathcal{U}$ (as described above) such that 
+If $\gamma:[0, a] \rightarrow M$ is a normal (with $|\gamma'|\equiv 1$) stably shortest geodesic, then it has a neighborhood $\exp _x \mathcal{U}$ (as described above) such that 
 $\exp _x: \mathcal{U} \rightarrow \exp _x \mathcal{U}$ is a diffeomorphism, and
 $$
 \rho\left(\exp _x z\right)=|z|, \quad \forall z \in \mathcal{U} .
 $$
-Thus, $\rho$ is smooth on $\exp _x \mathcal{U}-\{x\}$. Now, we define a vector field $\frac{\partial}{\partial \rho}$ on $\exp _x \mathcal{U}-\{x\}$ as follows:
-For any $\exp _x z \in \exp _x \mathcal{U}-\{x\}$, we have
+Thus, $\rho$ is smooth on $\exp _x \mathcal{U}-\{x\}$. 
+By Gauss's Lemma in Note 6, the gradient of the function $\rho$ is $\frac{\partial}{\partial \rho}$, i.e. for any tangent vector $X$ in $\exp _x \mathcal{U}-\{x\}$, 
 $$
-\frac{z}{|z|} \in T_x M \equiv T_z\left(T_x M\right),
-$$
-so let
-$$
-\left.\frac{\partial}{\partial \rho}\right|_{\exp _x z}=\mathrm{d} \exp _x\left(\frac{z}{|z|}\right).
-$$
-It is clear from the definition of $\frac{\partial}{\partial \rho}$ that:
-\begin{equation}
-  \left\{
-  \begin{array}{l}
-    \frac{\partial}{\partial \rho} \cdot \rho=1, \\
-    \left\langle\frac{\partial}{\partial \rho}, \frac{\partial}{\partial \rho}\right\rangle=1 .
-  \end{array}
-  \right.  
-\end{equation}
+X (\rho)=\left\langle X, \frac{\partial}{\partial \rho}\right\rangle.
+$$  
 
-Using $\rho$ and $\frac{\partial}{\partial \rho}$, we can restate Gauss's Lemma as follows:
+Before we state the Hessian Comparison Theorem, we give an important lemma on calculating the Hessian of distance functions. 
+% Define a vector field $\frac{\partial}{\partial \rho}$ on $\exp _x \mathcal{U}-\{x\}$ as follows:
+% For any $\exp _x z \in \exp _x \mathcal{U}-\{x\}$, we have
+% $$
+% \frac{z}{|z|} \in T_x M \approx  T_z\left(T_x M\right),
+% $$
+% so let
+% $$
+% \left.\frac{\partial}{\partial \rho}\right|_{\exp _x z}=\mathrm{d} \exp _x\left(\frac{z}{|z|}\right).
+% $$
+% It is clear from the definition of $\frac{\partial}{\partial \rho}$ that:
+% \begin{equation}
+%   \left\{
+%   \begin{array}{l}
+%     \frac{\partial}{\partial \rho} (\rho)=1, \\
+%     \left\langle\frac{\partial}{\partial \rho}, \frac{\partial}{\partial \rho}\right\rangle=1 .
+%   \end{array}
+%   \right.  
+% \end{equation}
+
+% Using $\rho$ and $\frac{\partial}{\partial \rho}$, we can restate Gauss's Lemma as follows:
+% \begin{lemma}
+%   For any tangent vector $X$ in $\exp _x \mathcal{U}-\{x\}$, we have:
+%   $$
+%   X (\rho)=\left\langle X, \frac{\partial}{\partial \rho}\right\rangle.
+%   $$  
+% \end{lemma}
+% \begin{proof}[Proof]
+%   When $X=\frac{\partial}{\partial \rho}$, it is evident from equation (1) that the lemma holds. If
+%   $$
+%   \left\langle X, \frac{\partial}{\partial \rho}\right\rangle=0,
+%   $$
+%   then by Gauss's Lemma in Note 6, we know that $X$ is tangent to a geodesic sphere. Note that the distance function $\rho$ is constant on the geodesic sphere, so $X (\rho)=0$. This proves the lemma.  
+% \end{proof}
+
 \begin{lemma}
-  For any tangent vector $X$ in $\exp _x \mathcal{U}-\{x\}$, we have:
+  Let $\gamma:[0,a]\rightarrow M$ be normal stably shortest geodesic and $J$ is a normal Jacobi field along $\gamma$ with $J(0)=0$. Then 
   $$
-  X \cdot \rho=\left\langle X, \frac{\partial}{\partial \rho}\right\rangle.
-  $$  
+  \nabla^2\rho\left(J\left(a\right),J\left(a\right)\right) = \langle J'\left(a\right),J\left(a\right)\rangle. 
+  $$
 \end{lemma}
 \begin{proof}[Proof]
-  When $X=\frac{\partial}{\partial \rho}$, it is evident from equation (1) that the lemma holds. If
+  By Proposition 1 in Note 6, we know that Jacobi fields can be represented as transversal vector fields to a one-parameter family of geodesics. 
+  Take $\varepsilon$ small enough so that for any $u\in [0,\varepsilon]$, $u J'(0)\in \mathcal{U}\subset T_{\gamma(0)} M$. 
+  Define $\alpha : [0, a] \times [0, \varepsilon] \rightarrow M$, given by
   $$
-  \left\langle X, \frac{\partial}{\partial \rho}\right\rangle=0,
+  \alpha(t, u) =\exp_{\gamma(0)}\left(t\left(\gamma'(0)+uJ'(0)\right)\right).
   $$
-  then by Gauss's Lemma in Note 6, we know that $X$ is tangent to a geodesic sphere. Note that the geodesic sphere is an iso-distance surface of $\rho$, so $X \cdot \rho=0$. This proves the lemma.  
+  Let $T = \alpha_*\left(\frac{\partial}{\partial t}\right)$ and $V = \alpha_*\left(\frac{\partial}{\partial u}\right)$, and we have:
+  $$
+  V(\gamma(t)) = J(t) \quad \text{ and } \quad T(\gamma(t)) = \frac{\partial}{\partial \rho}\big|_{\gamma(t)}.
+  $$
+  Now, let's compute at $\gamma(a)$: 
+  $$
+  \begin{aligned}
+  \nabla^2 \rho(J(a), J(a)) &= V V \rho - \left(\nabla_V V\right) \rho \\
+  &= V\left\langle V, \frac{\partial}{\partial \rho}\right\rangle - \left\langle\nabla_V V, \frac{\partial}{\partial \rho}\right\rangle \\
+  &= V\langle V, T\rangle - \left\langle\nabla_V V, T\right\rangle \\
+  &= \left\langle\nabla_V V, T\right\rangle + \left\langle V, \nabla_V T\right\rangle - \left\langle\nabla_V V, T\right\rangle \\
+  &= \left\langle\nabla_V T, V\right\rangle = \left\langle\nabla_T V, V\right\rangle  \\
+  &= \langle\dot{J}(a), J(a)\rangle.
+  \end{aligned}
+  $$
+  In the above calculation, we used Gauss's Lemma and $ [V, T] = 0$. Additionally, for simplicity, we did not explicitly indicate that the functions should be evaluated at $\gamma(a)$.
 \end{proof}
 
-Given $f\in C^2(M)$, the second-order covariant derivative of $f$, i.e. $\nabla^2 f = \nabla df$, is called the Hessian of $f$, denoted by $\text{Hes}(f)$. 
-By definition, for any smooth vector fields $X, Y$ on $M$, we have:
-$$
-\begin{aligned}
-\text{Hes}(f)(X, Y) &= \nabla df(X, Y) \\
-&= Y(Xf) - (\nabla_X Y)f.
-\end{aligned}
-$$
-As $\text{Hes}(f)$ is a $(0,2)$-order symmetric tensor field, 
-it induces a symmetric bilinear functional on $T_p(M)$ for each point $p$ in $M$.
-% Laplacian of $f$: 
-% From equation (3.4.26), the Laplacian of $f$, denoted as $\Delta f$, is equal to the trace of $\text{Hes}(f)$, i.e.,
-% $$
-% \Delta f = \text{tr}(\text{Hes}(f)) = \text{tr}(\nabla^2 f).
-% $$
-If we choose a local coordinate system $(x^i)$ around a point $p \in M$, then by Proposition 3 in Note 6, we have:
-$$
-\begin{aligned}
-\text{Hes}(f)\left(\frac{\partial}{\partial x^i}(p), \frac{\partial}{\partial x^j}(p)\right) &= \frac{\partial^2 f}{\partial x^i \partial x^j}(p), \\
-% \Delta f(p) &= \sum_i \frac{\partial^2 f}{\left(\partial x^i\right)^2}(p).
-\end{aligned}
-$$
-From this, we can see that the value of $\text{Hes}(f)(X, Y)$ at point $p$ depends only on the values of the vectors $X$ and $Y$ at point $p$ and is independent of their behavior near $p$.
+Let $M, \widetilde{M}$ be $n$-dimensional , $\gamma:[0, a] \rightarrow M, \widetilde{\gamma}:[0, a] \rightarrow \widetilde{M}$ are normal geodesics and $x=\gamma(0), \widetilde{x}=\widetilde{\gamma}(0)$. 
+Suppose $\rho, \widetilde{\rho}$ be distance functions on $M, \widetilde{M}$, associated with $x, \widetilde{x}$, respectively. 
+\begin{theorem}[Hessian Comparison Theorem]
+  Suppose 
 
-\subsection*{Toponogov's Theorem and its Applications}
+  (1) $\gamma$ and $\widetilde{\gamma}$ are stably shortest; 
+
+  (2) For all $t$ and all $x \in T_{\gamma(t)}(M), \tilde{x} \in T_{\tilde{\gamma}(t)}(\tilde{M})$, we have
+  $$
+  \tilde{K}\left(\tilde{x}, \tilde{\gamma}^{\prime}(t)\right) \geq K\left(x, \gamma^{\prime}(t)\right). 
+  $$
+  Then $\rho, \widetilde{\rho}$ are smooth in some neighborhoods of $\gamma, \widetilde{\gamma}$. Moreover, for all $t \in[0, a]$ and $X \in T_{\gamma(t)} M, \tilde{X} \in T_{\widetilde{\gamma}(t)} \widetilde{M}$, 
+  if $|X|=|\widetilde{X}|,\langle X, \dot{\gamma}(t)\rangle=\langle\widetilde{X}, \dot{\widetilde{\gamma}}(t)\rangle$, then we have 
+  $$
+  \nabla^2 \widetilde{\rho}(\widetilde{X}, \widetilde{X}) \leq \nabla^2 \rho(X, X).
+  $$
+  We simply denote the above by $\nabla^2 \widetilde{\rho} \prec \nabla^2 \rho$ along $\gamma, \widetilde{\gamma}$.  
+\end{theorem}
+\begin{proof}[Proof]
+  $X$ can be uniquely decomposed as follows:
+  $$
+  X = \langle X, \gamma'(t)\rangle {\gamma}'(t) + Y,
+  $$
+  where $\langle Y, \gamma'(t)\rangle = 0$. Due to the following:
+  $$
+  \begin{aligned}
+  \nabla^2 \rho(\gamma'(t), \gamma'(t)) &= \dot{\gamma}(t) \dot{\gamma}(t) \rho - \left(\nabla_{\gamma'(t)} \gamma'(t)\right) \rho = 0, \\
+  \nabla^2 \rho(\gamma'(t), Y) &= \gamma'(t) Y \rho - \left(\nabla_{\gamma'(t)} Y\right) \rho \\
+  &= \gamma'(t) \left\langle Y, \frac{\partial}{\partial \rho}\right\rangle - \left\langle\nabla_{\gamma'(t)} Y, \frac{\partial}{\partial \rho}\right\rangle \\
+  &= \left\langle Y, \nabla_{\gamma'(t)} \frac{\partial}{\partial \rho}\right\rangle = 0,
+  \end{aligned}
+  $$
+  we have:
+  $$
+  \begin{aligned}
+  \nabla^2 \rho(X, X) 
+  &= \langle X, \gamma'(t)\rangle^2 \nabla^2 \rho(\gamma'(t), \gamma'(t)) \\
+  &\quad + 2\langle X, \gamma'(t)\rangle \nabla^2 \rho(\gamma'(t), Y) + \nabla^2 \rho(Y, Y)  \\
+  &= \nabla^2 \rho(Y, Y).
+  \end{aligned}
+  $$
+  Similarly, we have:
+  $$
+  \tilde{X} = \langle\tilde{X}, \dot{\widetilde{\gamma}}(t)\rangle \dot{\widetilde{\gamma}}(t) + \widetilde{Y}, \quad \text{ and }\quad
+  \nabla^2 \widetilde{\rho}(\tilde{X}, \widetilde{X}) = \nabla^2 \widetilde{\rho}(\tilde{Y}, \widetilde{Y}).
+  $$
+  Therefore, to prove $\nabla^2 \widetilde{\rho}(\tilde{X}, \widetilde{X}) \leq \nabla^2 \rho(X, X),$ it is equivalent to proving:
+  $$
+  \nabla^2 \widetilde{\rho}(\tilde{Y}, \tilde{Y}) \leq \nabla^2 \rho(Y, Y).
+  $$
+
+  At this point:
+  $$
+  \begin{aligned}
+  & \langle Y, \gamma'(t)\rangle = 0 = \langle\widetilde{Y}, \tilde{\gamma}'(t)\rangle, \\
+  &\begin{aligned}
+    |Y|^2 
+    &= |X-\langle X, \gamma'(t)\rangle \gamma'(t)|^2 \\
+    &= |X|^2-\langle X, \gamma'(t)\rangle^2 \\
+    &= |\widetilde{X}|^2-\langle\widetilde{X}, \widetilde{\gamma}'(t)\rangle^2=|\widetilde{Y}|^2 .
+    \end{aligned}
+  \end{aligned}
+  $$
+  Since $\gamma$ and $\widetilde{\gamma}$ are stably shortest geodesics, there are no conjugate points. 
+  We can separately construct normal Jacobi fields $J$ and $\widetilde{J}$ along $\gamma$ and $\widetilde{\gamma}$, such that:
+  $$
+  J(t) = Y, \quad \widetilde{J}(t) = \widetilde{Y}.
+  $$
+  By Lemma 1, we only need to prove 
+  \begin{equation}
+    \langle \tilde{J}'\left(a\right),\tilde{J}\left(a\right)\rangle \leq \langle J'\left(a\right),J\left(a\right)\rangle. 
+  \end{equation}
+  In the proof of Rauch Comparison Theorem (general case), replace the definitions 
+  $$
+  W_{t_1}(t) = \frac{J(t)}{\left|J(t_1)\right|} \quad \text{and} \quad \tilde{W}_{t_1}(t) = \frac{\tilde{J}(t)}{\left|\tilde{J}(t_1)\right|}.
+  $$
+  by
+  $$
+  W_{t_1}(t) = J(t) \quad \text{and} \quad \tilde{W}_{t_1}(t) = \tilde{J}(t).
+  $$
+  Then followed the same procedure, one can prove inequality (1).
+\end{proof}
+
+Now we give some corollaries which are under the same prerequisites as Theorem 2.
+\begin{corollary}
+  If $f:[0, +\infty) \rightarrow \mathbf{R}$ is a $C^\infty$ increasing function (i.e., $f^\prime \geq 0$), then along $\gamma$ and $\widetilde{\gamma}$, we have:
+  $$
+  \nabla^2 f(\widetilde{\rho}) \prec  \nabla^2 f(\rho).
+  $$  
+\end{corollary}
+\begin{proof}[Proof]
+  Since
+  $$
+  \begin{aligned}
+  \nabla^2 f(\rho)(X, X) & = X X f(\rho) - \left(\nabla_X X\right) f(\rho) \\
+  & = f^\prime(\rho) \left(X X \rho - \left(\nabla_X X\right) \rho\right) + f^{\prime \prime}(\rho)(X \rho)^2 \\
+  & = f^\prime(\rho) \nabla^2 \rho(X, X) + f^{\prime \prime}(\rho)\langle X, \dot{\gamma}(t)\rangle^2,
+  \end{aligned}
+  $$
+  the conclusion is evident.
+\end{proof}
+
+Since $\Delta$ represents the trace of $\nabla^2$, we can also compare the Laplacian of distance functions.
+\begin{corollary}
+  For any $t \in (0, a]$, we have 
+  $$
+  \Delta \widetilde{\rho}(\widetilde{\gamma}(t)) \leq \Delta \rho(\gamma(t)).
+  $$
+\end{corollary}
+
+\subsection*{Toponogov's Theorem}
 
 In this section we state Toponogov's Theorem$^{\cite{Cheeger2008}}$, which is a powerful global generalization of the Rauch Theorem. There will be two equivalent statements, and it will be convenient to prove them simultaneously.
 All indices below are to be taken modulo 3. 
@@ -271,15 +418,16 @@ All indices below are to be taken modulo 3.
   the angle between $-\gamma_{i+1}^{\prime}\left(l_{i+1}\right)$ and $\gamma_{i+2}^{\prime}(0), 0 \leq \alpha_i \leq \pi$.  
 \end{definition}
 We shall specify a geodesic triangle by giving its sides $\left(\gamma_1, \gamma_2, \gamma_3\right)$.
-\begin{theorem}
-  Let $M$ be a complete manifold with $K_M \geq$ $H$.
 
-  (A) Let $\left(\gamma_1, \gamma_2, \gamma_3\right)$ determine a geodesic triangle in M. Suppose $\gamma_1, \gamma_3$ are minimal and if $H>0$, suppose $L\left[\gamma_2\right] \leq \frac{\pi}{\sqrt{H}}$. 
+Let $M$ be a complete manifold with $K_M \geq H$, i.e. for all plane sections $\sigma\in M$, $K(\sigma)\geq H$.
+\begin{theorem}[Toponogov's Theorem A]
+  Let $\left(\gamma_1, \gamma_2, \gamma_3\right)$ determine a geodesic triangle in M. Suppose $\gamma_1, \gamma_3$ are minimal and if $H>0$, suppose $L\left[\gamma_2\right] \leq \frac{\pi}{\sqrt{H}}$. 
   Then in $M^H$, the simply connected 2-dimensional space of constant curvature $H$, there exists a geodesic triangle $\left(\bar{\gamma}_1, \bar{\gamma}_2, \bar{\gamma}_3\right)$ 
   such that $L\left[\gamma_i\right]=L\left[\bar{\gamma}_i\right]$ and $\bar{\alpha}_1 \leq \alpha_1, \bar{\alpha}_3 \leq \alpha_3$. 
   Except in case $H>0$ and $L\left[\gamma_i\right]=\frac{\pi}{\sqrt{H}}$ for some $i$, the triangle in $M^H$ is uniquely determined.
-
-  (B) Let $\gamma_1, \gamma_2$ be geodesic segments in $M$ such that $\gamma_1\left(l_1\right)=\gamma_2(0)$ and $\angle\left(-\gamma_1^{\prime}\left(l_1\right), \gamma_2^{\prime}(0)\right)=\alpha$. 
+\end{theorem}
+\begin{theorem}[Toponogov's Theorem B]
+  Let $\gamma_1, \gamma_2$ be geodesic segments in $M$ such that $\gamma_1\left(l_1\right)=\gamma_2(0)$ and $\angle\left(-\gamma_1^{\prime}\left(l_1\right), \gamma_2^{\prime}(0)\right)=\alpha$. 
   We call such a configuration a hinge $l$ and denote it by $\left(\gamma_1, \gamma_2, \alpha\right)$. Let $\gamma_1$ be minimal, and if $H>0$,
   $$
   L\left[\gamma_2\right] \leq \frac{\pi}{\sqrt{H}}
@@ -288,7 +436,7 @@ We shall specify a geodesic triangle by giving its sides $\left(\gamma_1, \gamma
   $\angle\left(-\bar{\gamma}_1^{\prime}\left(l_1\right), \bar{\gamma}_2^{\prime}(0)\right)=\alpha$. Then
   $$
   \rho\left(\gamma_1(0), \gamma_2\left(l_2\right)\right) \leq \rho\left(\bar{\gamma}_1(0), \bar{\gamma}_2\left(l_2\right)\right)
-  $$  
+  $$    
 \end{theorem}
 For the proof is too long but the necessary tools to prove this theorem are all given by us so far, we shall not present the proof here. 
 
