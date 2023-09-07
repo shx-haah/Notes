@@ -177,9 +177,32 @@ and the method is similar to the proof of this corollary. However, it typically 
 This corollary plays an essential role in the proof of the following Toponogov's Theorem and that is how the theorem relies on the Rauch Comparison theorem. 
 
 \subsection*{Hessian Comparison Theorem and its application}
-We will introduce a naturally defined distance function on the manifold as well as Gauss's Lemma expressed using the distance function.
+We will introduce the Hessian and Laplacian on manifolds as well as a naturally defined distance function.
 
-To avoid introducing the concepts of cut points and cut locus, we introduce another specialized definition: a geodesic is called "stably shortest" if all geodesics nearby it are also shortest. Specifically, let
+Given $f\in C^2(M)$, the second-order covariant derivative of $f$, i.e. $\nabla^2 f = \nabla df$, is called the Hessian of $f$. 
+By definition, for any smooth vector fields $X, Y$ on $M$, we have:
+$$
+\begin{aligned}
+\nabla^2 f(X, Y) &= \nabla df(X, Y) \\
+&= Y(Xf) - (\nabla_X Y)f.
+\end{aligned}
+$$
+As $\nabla^2 f$ is a $(0,2)$-order symmetric tensor field, 
+it induces a symmetric bilinear functional on $T_p M$ for each point $p$ in $M$.
+The Laplacian of $f$, denoted as $\Delta f$, is equal to the trace of $\nabla^2(f)$, i.e.,
+$$
+\Delta f = \text{tr}(\nabla^2(f)) = \text{tr}(\nabla^2 f).
+$$
+If we choose a local coordinate system $(x^i)$ around a point $p \in M$, then by Proposition 3 in Note 6, we have:
+$$
+\begin{aligned}
+\nabla^2 f\left(\frac{\partial}{\partial x^i}(p), \frac{\partial}{\partial x^j}(p)\right) &= \frac{\partial^2 f}{\partial x^i \partial x^j}(p), \\
+\Delta f(p) &= \sum_i \frac{\partial^2 f}{\left(\partial x^i\right)^2}(p).
+\end{aligned}
+$$
+From this, we can see that the value of $\nabla^2 f(X, Y)$ at point $p$ depends only on the values of the vectors $X$ and $Y$ at point $p$ and is independent of their behavior near $p$.
+
+To avoid discussing the concepts of cut points and cut locus, we introduce another specialized definition: a geodesic is called "stably shortest" if all geodesics nearby it are also shortest. Specifically, let
 $$
 \begin{aligned}
   \widetilde{\gamma}:[0, a] &\rightarrow T_{\gamma(0)} M \\
@@ -207,6 +230,7 @@ $$
 X (\rho)=\left\langle X, \frac{\partial}{\partial \rho}\right\rangle.
 $$  
 
+Before we state the Hessian Comparison Theorem, we give an important lemma on calculating the Hessian of distance functions. 
 % Define a vector field $\frac{\partial}{\partial \rho}$ on $\exp _x \mathcal{U}-\{x\}$ as follows:
 % For any $\exp _x z \in \exp _x \mathcal{U}-\{x\}$, we have
 % $$
@@ -240,29 +264,6 @@ $$
 %   $$
 %   then by Gauss's Lemma in Note 6, we know that $X$ is tangent to a geodesic sphere. Note that the distance function $\rho$ is constant on the geodesic sphere, so $X (\rho)=0$. This proves the lemma.  
 % \end{proof}
-
-Given $f\in C^2(M)$, the second-order covariant derivative of $f$, i.e. $\nabla^2 f = \nabla df$, is called the Hessian of $f$. 
-By definition, for any smooth vector fields $X, Y$ on $M$, we have:
-$$
-\begin{aligned}
-\nabla^2 f(X, Y) &= \nabla df(X, Y) \\
-&= Y(Xf) - (\nabla_X Y)f.
-\end{aligned}
-$$
-As $\nabla^2 f$ is a $(0,2)$-order symmetric tensor field, 
-it induces a symmetric bilinear functional on $T_p M$ for each point $p$ in $M$.
-The Laplacian of $f$, denoted as $\Delta f$, is equal to the trace of $\nabla^2(f)$, i.e.,
-$$
-\Delta f = \text{tr}(\nabla^2(f)) = \text{tr}(\nabla^2 f).
-$$
-If we choose a local coordinate system $(x^i)$ around a point $p \in M$, then by Proposition 3 in Note 6, we have:
-$$
-\begin{aligned}
-\nabla^2 f\left(\frac{\partial}{\partial x^i}(p), \frac{\partial}{\partial x^j}(p)\right) &= \frac{\partial^2 f}{\partial x^i \partial x^j}(p), \\
-\Delta f(p) &= \sum_i \frac{\partial^2 f}{\left(\partial x^i\right)^2}(p).
-\end{aligned}
-$$
-From this, we can see that the value of $\nabla^2 f(X, Y)$ at point $p$ depends only on the values of the vectors $X$ and $Y$ at point $p$ and is independent of their behavior near $p$.
 
 \begin{lemma}
   Let $\gamma:[0,a]\rightarrow M$ be normal stably shortest geodesic and $J$ is a normal Jacobi field along $\gamma$ with $J(0)=0$. Then 
