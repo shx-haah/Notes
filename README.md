@@ -1,6 +1,6 @@
 # Notes
 
-This repository contains notes from researchs or lectures.
+This repository contains notes from researches or lectures.
 
 ## Content
 
