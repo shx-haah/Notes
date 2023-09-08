@@ -206,12 +206,12 @@ To avoid discussing the concepts of cut points and cut locus, we introduce anoth
 $$
 \begin{aligned}
   \widetilde{\gamma}:[0, a] &\rightarrow T_{\gamma(0)} M \\
-  t &\mapsto t \dot{\gamma}(0)
+  t &\mapsto t \gamma'(0)
 \end{aligned}
 $$
 be a radial line segment with $\gamma(0)=x$. We call $\gamma=\exp _x \widetilde{\gamma}$ "stably shortest" if there exists a sector neighborhood $\mathcal{U}$ of $\widetilde{\gamma}$ in $T_x M$ such that:
 $$
-\mathcal{U}=\{t p\mid t \in[0, a],|p-\dot{\gamma}(0)|<\text { some constant }\}.
+\mathcal{U}=\{t p\mid t \in[0, a],|p-\gamma'(0)|<\text { some constant }\}.
 $$
 All radial line segments in $\mathcal{U}$ are mapped to the shortest geodesics in $M$ starting from $x$ by $\exp _x$. 
 From the continuity of the cut locus (see \cite{WuHongXi2014}, p.158, Lemma 5), one can show that 
@@ -290,7 +290,7 @@ Before we state the Hessian Comparison Theorem, we give an important lemma on ca
   &= V\langle V, T\rangle - \left\langle\nabla_V V, T\right\rangle \\
   &= \left\langle\nabla_V V, T\right\rangle + \left\langle V, \nabla_V T\right\rangle - \left\langle\nabla_V V, T\right\rangle \\
   &= \left\langle\nabla_V T, V\right\rangle = \left\langle\nabla_T V, V\right\rangle  \\
-  &= \langle\dot{J}(a), J(a)\rangle.
+  &= \langle J'(a), J(a)\rangle.
   \end{aligned}
   $$
   In the above calculation, we used Gauss's Lemma and $ [V, T] = 0$. Additionally, for simplicity, we did not explicitly indicate that the functions should be evaluated at $\gamma(a)$.
@@ -308,7 +308,7 @@ Suppose $\rho, \widetilde{\rho}$ be distance functions on $M, \widetilde{M}$, as
   \tilde{K}\left(\tilde{x}, \tilde{\gamma}^{\prime}(t)\right) \geq K\left(x, \gamma^{\prime}(t)\right). 
   $$
   Then $\rho, \widetilde{\rho}$ are smooth in some neighborhoods of $\gamma, \widetilde{\gamma}$. Moreover, for all $t \in[0, a]$ and $X \in T_{\gamma(t)} M, \tilde{X} \in T_{\widetilde{\gamma}(t)} \widetilde{M}$, 
-  if $|X|=|\widetilde{X}|,\langle X, \dot{\gamma}(t)\rangle=\langle\widetilde{X}, \dot{\widetilde{\gamma}}(t)\rangle$, then we have 
+  if $|X|=|\widetilde{X}|,\langle X, \gamma'(t)\rangle=\langle\widetilde{X}, \widetilde{\gamma}'(t)\rangle$, then we have 
   $$
   \nabla^2 \widetilde{\rho}(\widetilde{X}, \widetilde{X}) \leq \nabla^2 \rho(X, X).
   $$
@@ -322,7 +322,7 @@ Suppose $\rho, \widetilde{\rho}$ be distance functions on $M, \widetilde{M}$, as
   where $\langle Y, \gamma'(t)\rangle = 0$. Due to the following:
   $$
   \begin{aligned}
-  \nabla^2 \rho(\gamma'(t), \gamma'(t)) &= \dot{\gamma}(t) \dot{\gamma}(t) \rho - \left(\nabla_{\gamma'(t)} \gamma'(t)\right) \rho = 0, \\
+  \nabla^2 \rho(\gamma'(t), \gamma'(t)) &= \gamma'(t) \gamma'(t) \rho - \left(\nabla_{\gamma'(t)} \gamma'(t)\right) \rho = 0, \\
   \nabla^2 \rho(\gamma'(t), Y) &= \gamma'(t) Y \rho - \left(\nabla_{\gamma'(t)} Y\right) \rho \\
   &= \gamma'(t) \left\langle Y, \frac{\partial}{\partial \rho}\right\rangle - \left\langle\nabla_{\gamma'(t)} Y, \frac{\partial}{\partial \rho}\right\rangle \\
   &= \left\langle Y, \nabla_{\gamma'(t)} \frac{\partial}{\partial \rho}\right\rangle = 0,
@@ -339,7 +339,7 @@ Suppose $\rho, \widetilde{\rho}$ be distance functions on $M, \widetilde{M}$, as
   $$
   Similarly, we have:
   $$
-  \tilde{X} = \langle\tilde{X}, \dot{\widetilde{\gamma}}(t)\rangle \dot{\widetilde{\gamma}}(t) + \widetilde{Y}, \quad \text{ and }\quad
+  \tilde{X} = \langle\tilde{X}, \widetilde{\gamma}'(t)\rangle \widetilde{\gamma}'(t) + \widetilde{Y}, \quad \text{ and }\quad
   \nabla^2 \widetilde{\rho}(\tilde{X}, \widetilde{X}) = \nabla^2 \widetilde{\rho}(\tilde{Y}, \widetilde{Y}).
   $$
   Therefore, to prove $\nabla^2 \widetilde{\rho}(\tilde{X}, \widetilde{X}) \leq \nabla^2 \rho(X, X),$ it is equivalent to proving:
@@ -392,7 +392,7 @@ Now we give some corollaries which are under the same prerequisites as Theorem 2
   \begin{aligned}
   \nabla^2 f(\rho)(X, X) & = X X f(\rho) - \left(\nabla_X X\right) f(\rho) \\
   & = f^\prime(\rho) \left(X X \rho - \left(\nabla_X X\right) \rho\right) + f^{\prime \prime}(\rho)(X \rho)^2 \\
-  & = f^\prime(\rho) \nabla^2 \rho(X, X) + f^{\prime \prime}(\rho)\langle X, \dot{\gamma}(t)\rangle^2,
+  & = f^\prime(\rho) \nabla^2 \rho(X, X) + f^{\prime \prime}(\rho)\langle X, \gamma'(t)\rangle^2,
   \end{aligned}
   $$
   the conclusion is evident.
@@ -410,35 +410,47 @@ Since $\Delta$ represents the trace of $\nabla^2$, we can also compare the Lapla
 
 In this section we state Toponogov's Theorem$^{\cite{Cheeger2008}}$, which is a powerful global generalization of the Rauch Theorem. There will be two equivalent statements, and it will be convenient to prove them simultaneously.
 All indices below are to be taken modulo 3. 
+
+Let $(M, g)$ be complete. Recall that a geodesic triangle consists of three points in $M$ (called the vertices) and three minimizing geodesics (called the sides) joining each two of them. 
 \begin{definition}
-  A geodesic triangle in the Riemannian manifold $\mathrm{M}$ is a set of three geodesic segments parameterized by arc length $\left(\gamma_1, \gamma_2, \gamma_3\right)$ of lengths $l_1, l_2, l_3$ such that $\gamma_i\left(l_i\right)=\gamma_{i+1}(0)$ and $l_i+l_{i+1} \geq l_{i+2}$. Set
+  A geodesic triangle in the Riemannian manifold $\mathrm{M}$ is a set of three geodesic segments parameterized by arc length $\left(\gamma_1, \gamma_2, \gamma_3\right)$ of lengths $l_1, l_2, l_3$ such that 
+  $\gamma_i\left(l_i\right)=\gamma_{i+1}(0)$ and $l_i+l_{i+1} \geq l_{i+2}$. Set
   $$
   \alpha_i=\angle\left(-\gamma_{i+1}^{\prime}\left(l_{i+1}\right), \gamma_{i+2}^{\prime}(0)\right),
   $$
   the angle between $-\gamma_{i+1}^{\prime}\left(l_{i+1}\right)$ and $\gamma_{i+2}^{\prime}(0), 0 \leq \alpha_i \leq \pi$.  
 \end{definition}
-We shall specify a geodesic triangle by giving its sides $\left(\gamma_1, \gamma_2, \gamma_3\right)$.
+If only two sides, say $\gamma_1$ and $\gamma_2$, are minimal, while the third side is a geodesic, which may be not minimal, but still satisfies the triangle inequality
+$$
+l_1+l_2 \geq L\left(\gamma_{3}\right), 
+$$
+then we will call this triangle a generalized geodesic triangle. We shall specify a geodesic triangle by giving its sides $\left(\gamma_1, \gamma_2, \gamma_3\right)$.
 
 Let $M$ be a complete manifold with $K_M \geq H$, i.e. for all plane sections $\sigma\in M$, $K(\sigma)\geq H$.
-\begin{theorem}[Toponogov's Theorem A]
-  Let $\left(\gamma_1, \gamma_2, \gamma_3\right)$ determine a geodesic triangle in M. Suppose $\gamma_1, \gamma_3$ are minimal and if $H>0$, suppose $L\left[\gamma_2\right] \leq \frac{\pi}{\sqrt{H}}$. 
+\begin{theorem}[Toponogov's Theorem (Triangle Version)]
+  Let $\left(\gamma_1, \gamma_2, \gamma_3\right)$ determine a generalized geodesic triangle in $M$. Suppose $\gamma_1, \gamma_3$ are minimal and if $H>0$, suppose $L\left(\gamma_2\right) \leq \frac{\pi}{\sqrt{H}}$. 
   Then in $M^H$, the simply connected 2-dimensional space of constant curvature $H$, there exists a geodesic triangle $\left(\bar{\gamma}_1, \bar{\gamma}_2, \bar{\gamma}_3\right)$ 
-  such that $L\left[\gamma_i\right]=L\left[\bar{\gamma}_i\right]$ and $\bar{\alpha}_1 \leq \alpha_1, \bar{\alpha}_3 \leq \alpha_3$. 
-  Except in case $H>0$ and $L\left[\gamma_i\right]=\frac{\pi}{\sqrt{H}}$ for some $i$, the triangle in $M^H$ is uniquely determined.
+  such that 
+  $$
+  L\left(\gamma_i\right)=L\left(\bar{\gamma}_i\right) \quad \text{ and } \quad \bar{\alpha}_1 \leq \alpha_1, \bar{\alpha}_3 \leq \alpha_3.
+  $$
+  Except in case $H>0$ and $L\left(\gamma_i\right)=\frac{\pi}{\sqrt{H}}$ for some $i$, the triangle in $M^H$ is uniquely determined.
 \end{theorem}
-\begin{theorem}[Toponogov's Theorem B]
-  Let $\gamma_1, \gamma_2$ be geodesic segments in $M$ such that $\gamma_1\left(l_1\right)=\gamma_2(0)$ and $\angle\left(-\gamma_1^{\prime}\left(l_1\right), \gamma_2^{\prime}(0)\right)=\alpha$. 
-  We call such a configuration a hinge $l$ and denote it by $\left(\gamma_1, \gamma_2, \alpha\right)$. Let $\gamma_1$ be minimal, and if $H>0$,
-  $$
-  L\left[\gamma_2\right] \leq \frac{\pi}{\sqrt{H}}
-  $$
-  Let $\bar{\gamma}_1, \bar{\gamma}_2 \subset M^H$ be such that $\gamma_1\left(l_1\right)=\gamma_2(0), L\left[\gamma_i\right]=L\left[\bar{\gamma}_i\right]=l_i$ and 
+
+Similarly we can define a geodesic hinge $\angle B A C$, which consists of a point $A$ in $M$ (called the vertex) 
+and two minimal geodesics $\gamma_{A B}, \gamma_{A C}$ (called the sides) emanating from $A$, with end points $B$ and $C$ in $M$. 
+If one side, say $\gamma_{A B}$, is minimal, while the other side $\gamma_{A C}$ is not, we will call $\angle B A C$ a generalized geodesic hinge.
+\begin{theorem}[Toponogov's Theorem (Hinge Version)]
+  Denote a generalized hinge by $\left(\gamma_1, \gamma_2, \alpha\right)$, given by geodesic segments $\gamma_1, \gamma_2$ in $M$ such that 
+  $\gamma_1\left(l_1\right)=\gamma_2(0)$ and $\angle\left(-\gamma_1^{\prime}\left(l_1\right), \gamma_2^{\prime}(0)\right)=\alpha$.   
+  Let $\gamma_1$ be minimal, and if $H>0$, suppose $L\left(\gamma_2\right) \leq \frac{\pi}{\sqrt{H}}$.
+  Let $\bar{\gamma}_1, \bar{\gamma}_2 \subset M^H$ be such that $\gamma_1\left(l_1\right)=\gamma_2(0), L\left(\gamma_i\right)=L\left(\bar{\gamma}_i\right)=l_i$ and 
   $\angle\left(-\bar{\gamma}_1^{\prime}\left(l_1\right), \bar{\gamma}_2^{\prime}(0)\right)=\alpha$. Then
   $$
-  \rho\left(\gamma_1(0), \gamma_2\left(l_2\right)\right) \leq \rho\left(\bar{\gamma}_1(0), \bar{\gamma}_2\left(l_2\right)\right)
+  \rho\left(\gamma_1(0), \gamma_2\left(l_2\right)\right) \leq \rho\left(\bar{\gamma}_1(0), \bar{\gamma}_2\left(l_2\right)\right).
   $$    
 \end{theorem}
-For the proof is too long but the necessary tools to prove this theorem are all given by us so far, we shall not present the proof here. 
+For the proof is too long but the necessary tools to prove this theorem are all given by us so far, the proof will be left as a possible future topic. 
 
 
 
